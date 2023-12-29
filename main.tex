@@ -1,0 +1,51 @@
+\documentclass[fontset=fandol, zihao=-4]{ctexart}
+\usepackage[a4paper, scale=0.7]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\numberwithin{equation}{section}    % let the equation number displays in (1.1) style
+\numberwithin{figure}{section}
+\usepackage{unicode-math}
+\setmathfont{STIX2Math}[Extension={.otf}, Path=./STIX2fonts/, Scale=1]
+\setmainfont{STIX2Text}[Extension={.otf}, Path=./STIX2fonts/, UprightFont={*-Regular}, BoldFont={*-Bold}, ItalicFont={*-Italic}, BoldItalicFont={*-BoldItalic}]
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{physics}    % symbols related to physics
+\usepackage{ulem}       % strikethrough \sout
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=magenta} % hyperref setup
+% shortcuts
+    % color
+    \newcommand{\cyan}[1]{\textcolor{cyan}{#1}}
+    % math style
+    \renewcommand{\rm}[1]{\mathrm{#1}}  % roman, redefining original \rm
+    \newcommand{\bm}[1]{\symbfit{#1}}   % bold+italic, using \symbfit instead of conventional \bm
+    \newcommand{\br}[1]{\symbf{#1}}     % bold+roman
+    % math
+    \newcommand{\pd}{\partial}      % partial symbol
+    % \newcommand{\dd}{\mathrm{d}}  % roman d (derivative & integral) [already implemented in the physics pkg]
+    \newcommand{\ii}{\mathrm{i}}    % roman i (imag.)
+    \newcommand{\ee}{\mathrm{e}}    % roman e (exp)
+    % \newcommand{\abs}[1]{\lvert #1 \rvert}  % abs symbol [already implemented in the physics pkg]
+    \renewcommand{\Re}{\mathcal{R}} % Re symbol
+    \renewcommand{\Im}{\mathcal{I}} % Im symbol
+    \newcommand{\del}{\br{\nabla}}  % bold nabla symbol
+    % frequently-used notations
+    \newcommand{\rr}{\bm{r}}
+    \newcommand{\pp}{\bm{p}}
+
+\begin{document}
+
+\title{\LARGE \textbf{量子力学期末复习}\\ \textsc{Review Notes for Quantum Mechanics}}
+\author{\Large \textsc{Mingyu Zhu}}
+
+\setcounter{page}{0}
+\maketitle
+\thispagestyle{empty}
+\tableofcontents
+\pagebreak
+
+\input{preface.tex}
+\pagebreak
+\input{sec1_intro.tex}
+\pagebreak
+
+\end{document}
