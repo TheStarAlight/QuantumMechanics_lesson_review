@@ -10,5 +10,6 @@
 *.bcf
 *.blg
 *.xml
+.vscode/
 
 main.pdf
