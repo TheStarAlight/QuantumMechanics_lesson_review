@@ -1,4 +1,5 @@
 \documentclass[fontset=fandol, zihao=-4]{ctexart}
+\linespread{1.5}
 \usepackage[a4paper, scale=0.7]{geometry}
 \usepackage{amsmath,amssymb,amsfonts}
 \numberwithin{equation}{section}    % let the equation number displays in (1.1) style
@@ -10,7 +11,8 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{physics}    % symbols related to physics
-\usepackage{ulem}       % strikethrough \sout
+% \usepackage{ulem}       % strikethrough \sout
+\usepackage{xeCJKfntef} % for Chinese underline style
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=magenta} % hyperref setup
 % shortcuts
     % color
@@ -31,6 +33,11 @@
     % frequently-used notations
     \newcommand{\rr}{\bm{r}}
     \newcommand{\pp}{\bm{p}}
+    % others
+    \catcode`\。=\active % replace 。with ．
+    \newcommand{。}{\ifmmode\text{．}\else ．\fi} % replace 。with ．
+    \renewcommand{\emph}[1]{\CJKunderline*[textformat=\bfseries]{#1}}
+    \newcommand{\schrodinger}{Schr\"{o}dinger}
 
 \begin{document}
 
