@@ -1,0 +1,293 @@
+
+\section{量子力学基本原理}
+
+% =================================================
+\subsection{不确定性原理}
+\label{subsec:principles_uncertainty}
+
+量子力学与经典力学之间的一大矛盾就在于\emph{不确定性原理}（uncertainty principle）。
+在原子尺度上，经典力学的运动观念与实验的结论出现了巨大的鸿沟。
+例如，在经典电动力学的框架下，围绕原子核做轨道运动的电子会释放电磁波从而最终落入原子核中；
+电子衍射实验中，电子的行为呈现出波动特征（这种现象称为\emph{波粒二象性}，wave-particle duality
+\footnote{需要阐明的是，波粒二象性本身便可以视为不确定性原理的一项推论。}
+）。
+
+为了更准确地描述不确定性原理，我们需要明确\emph{测量}这一概念。
+这里测量通常指的是一个服从经典力学的\emph{仪器}与被测量体系的相互作用，从而获得与体系有关的某个物理量的过程。
+测量是理想的，这是说，我们在此不考虑仪器存在的噪声、误差等因素。
+
+然而，不确定性原理表明，即便排除了仪器的噪声和干扰，我们所得的物理量测量结果也往往是不能用经典理论解释的。
+例如，倘若我们反复测量一个低能电子的位置$\rr$，并通过逼近的手段试图求取电子的瞬时速度（即$\bm{v}=\lim_{\Delta t\rightarrow 0}\Delta\rr/\Delta t$），我们会发现所得的瞬时速度根本不收敛，
+这意味着经典力学中的轨迹概念在量子力学中彻底失效了——在经典力学中，我们可以通过测量某一时刻系统的全部参数（广义坐标$q$与动量$p$），从而通过运动方程准确地预言系统之后的任何行为；而一个量子体系无法同时拥有确切的坐标和速度，因而也无法被精确预测。
+
+不过，尽管我们无法准确预言量子体系的行为，但我们可以预言测量量子体系得到某一结果的概率（否则量子力学就要成为一门玄学了）。
+这就是说，\emph{量子力学并不给出下一次测量的确切结果，而是给出测量结果的概率分布。}
+
+
+% =================================================
+\subsection{量子态叠加与统计诠释}
+\label{subsec:principles_quantum_state}
+
+% ================================
+\subsubsection{量子态的描述}
+
+既然量子力学中没有了经典力学中的轨迹概念，经典力学的广义坐标、动量$(q,p)$显然不能用于描述量子体系，因此，我们有必要考虑如何完备地描述量子体系。
+我们发现，当一个量子体系的某一组物理量都拥有确定的值之时，我们便唯一地确定了这个体系——测量这个体系的任何其他不含时的物理量所得的概率分布都是确定的。
+因此，我们得到这样的结论：\emph{量子体系的描述依赖于选取的某一组力学量，以这组力学量处于定值的状态作为对量子态的完全描述。}
+需要强调两点：
+\begin{itemize}
+    \item{力学量的选取并不是唯一的，可以有多种取法。}
+    \item{为了完备描述我们的量子态，这一组力学量必须是“适定”“超定”的，否则无法达成完备性。}
+    \item{这些力学量在经典力学中必须是完全非共轭的，例如，不能同时选取共轭的$\rr$和$\pp$。}
+\end{itemize}
+这一组力学量如何选取，有待后续讨论，但我们可以举出一些常见的例子：
+\begin{itemize}
+    \item{最为我们熟知的几种选取方法有坐标$\rr$、动量$\pp$或者能量（Hamiltonian量）$H$。}
+    \item{如果读者学过原子物理，可以知道，对位于质子库仑场中的电子（即不考虑核自由度的氢原子体系），选取的一组力学量是能量$H$、角动量平方$L^2$、角动量$z$分量$L_z$与电子自旋$z$分量$s_z$，这一组力学量是“适定”的。}
+    \item{描述光场，我们可以选取两种线偏振态$\leftrightarrow$与$\updownarrow$，也可以选取两种圆偏振态$\circlearrowleft$与$\circlearrowright$。}
+\end{itemize}
+
+
+% ================================
+\subsubsection{态叠加原理}
+
+确定了量子态的描述方法后，我们便可以继续思考如何描述一个普遍的量子态。
+\emph{态叠加原理}揭示了这样一个事实：\emph{一个普遍的量子态，其可以表示为其他量子态的线性叠加。}
+
+我们设在一个量子态中测量某一个力学量$q$可以得到确定的值$q_1$，我们将这个量子态记为$\ket{\psi_{q_1}}$或$\ket{\psi(q_1)}$
+\footnote{这里采用了Dirac记号，$\ket{\psi}$表示一个列矢量。我们之后会看到，量子态满足的线性叠加规则正如矢量一般，因此量子态也称为态矢。}；
+对另一个态$\ket{\psi_{q_2}}$进行$q$的测量可以获得$q_2$的取值，
+这两个态可以按任意系数进行线性叠加形成一个新的量子态：
+\begin{equation}
+    \label{eq:principles_superposition_discrete}
+    a_1 \ket{\psi_{q_1}} + a_2 \ket{\psi_{q_2}},
+\end{equation}
+或者写成向量形式：
+\begin{equation}
+    \begin{bmatrix}
+        \ket{\psi_{q_1}} & \ket{\psi_{q_2}}
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_1 \\ a_2
+    \end{bmatrix}.
+\end{equation}
+在这个态中，测量$q$的取值可能为$q_1$也可能为$q_2$，但\emph{其概率分布是确定的}。
+
+对于离散变量$q$，一个相当好的例子就是描述任意偏振态的光子，选取$\{\leftrightarrow,\updownarrow\}$或$\{\circlearrowleft,\circlearrowright\}$作为$\{\ket{\psi_{q_1}}, \ket{\psi_{q_2}}\}$，改变叠加系数$a_1, a_2$，即可描述任意偏振的光子。
+这时我们说$\{\ket{\psi_{q_1}}, \ket{\psi_{q_2}}\}$构成一组正交完备的\emph{基底}（basis）。
+
+若$q$是一个连续变量，拥有连续的取值，那么我们很自然地发现，这种连续变量表示的量子态的表示系数可以用一个关于$q$的函数来表达，即$\psi(q)$，而属于取值$q_0$的系数，就是$\psi(q_0)$。
+我们最熟悉的连续取值的力学量自然是坐标$\rr$了，这时，$\psi(\rr_0)$就表示位于坐标$\rr_0$处的这一量子态对应的系数，而$\psi(\rr)$，就是我们熟知的\emph{波函数}。
+对于动量$\pp$，相应的函数$\psi(\pp)$就称为\emph{动量波函数}。
+
+在这里，我们强调：
+\emph{给定的量子态是唯一确定的，而选取不同的力学量及其取值所对应的量子态所构成的基底描述这一量子态，得到的表示系数是不同的。}
+这正如同一个矢量在不同的坐标系中有着不同的表示系数，而这坐标系，正是我们为了描述这个量子态选取的一组基底，不同的基底就对应不同的\emph{表象}（representation）。
+例如，使用波函数表示量子态，意味着我们选取了坐标表象；使用动量波函数，意味着我们选取了动量表象。
+\emph{在研究量子力学问题时，明确所使用的表象尤为重要。}
+不同的表象也能相互转化，可以通过\emph{表象变换}获得一个量子态在不同表象下的表示系数。
+
+
+% ================================
+\subsubsection{表象变换}
+
+我们考虑这样一个问题：
+已知$\bm{a}=\{a_n\}$是量子态$\ket{\psi}$在$q$表象的表示系数，在$p$表象下的表示系数$\bm{b}=\{b_m\}$为何？
+
+这个问题可以用数学的方法给出解答。
+首先，写出量子态$\ket{\psi}$在两个表象下的表示：
+\begin{equation}
+    \ket{\psi} =
+    \begin{bmatrix}
+        \ket{\psi_{q_1}} & \ket{\psi_{q_2}} & \cdots
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_1 \\ a_2 \\ \vdots
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \ket{\psi_{p_1}} & \ket{\psi_{p_2}} & \cdots
+    \end{bmatrix}
+    \begin{bmatrix}
+        b_1 \\ b_2 \\ \vdots
+    \end{bmatrix}.
+\end{equation}
+左乘$
+\begin{bmatrix}
+    \bra{\psi_{p_1}} & \bra{\psi_{p_2}} & \cdots
+\end{bmatrix}^{\rm{T}}$
+\footnote{我们记列矢量$\ket{\psi}$的共轭转置为$\bra{\psi}$，即$\bra{\psi}=\ket{\psi}^{\rm{T}*}$，于是矢量的内积就很自然地写作$\braket{\psi}{\phi}$。}，
+利用归一条件$\braket{\psi}{\psi}\equiv 1$，
+我们得到
+\begin{equation}
+    \begin{bmatrix}
+        \bra{\psi_{p_1}} \\ \bra{\psi_{p_2}} \\ \vdots
+    \end{bmatrix}
+    \begin{bmatrix}
+        \ket{\psi_{q_1}} & \ket{\psi_{q_2}} & \cdots
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_1 \\ a_2 \\ \vdots
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \bra{\psi_{p_1}} \\ \bra{\psi_{p_2}} \\ \vdots
+    \end{bmatrix}
+    \begin{bmatrix}
+        \ket{\psi_{p_1}} & \ket{\psi_{p_2}} & \cdots
+    \end{bmatrix}
+    \begin{bmatrix}
+        b_1 \\ b_2 \\ \vdots
+    \end{bmatrix},
+\end{equation}
+即
+\begin{equation}
+    \underbrace{
+    \begin{bmatrix}
+        \braket{\psi_{p_1}}{\psi_{q_1}} & \braket{\psi_{p_1}}{\psi_{q_2}} & \cdots \\
+        \braket{\psi_{p_2}}{\psi_{q_1}} & \braket{\psi_{p_2}}{\psi_{q_2}} & \cdots \\
+        \vdots & \vdots & \ddots
+    \end{bmatrix}}_{S}
+    \underbrace{\begin{bmatrix}
+        a_1 \\ a_2 \\ \vdots
+    \end{bmatrix}}_{\bm{a}}
+    =
+    \begin{bmatrix}
+        1 \\ & 1 \\ & & \ddots
+    \end{bmatrix}
+    \begin{bmatrix}
+        b_1 \\ b_2 \\ \vdots
+    \end{bmatrix}
+    =
+    \underbrace{\begin{bmatrix}
+        b_1 \\ b_2 \\ \vdots
+    \end{bmatrix}}_{\bm{b}},
+\end{equation}
+这就是我们所求的$\bm{b}$与$\bm{a}$之间的关系，两个表示系数向量通过一个正交矩阵$S$\footnote{事实上，$S$满足的性质是幺正性（unitary），即其Hermite共轭（转置加共轭）$S^{\dagger}=S^{\rm{T}*}$等于其逆$S^{-1}$。}联系起来，这不禁让我们联想起线性代数中的基底变换。
+事实上，这的确是一脉相承的，因为选取不同的表象就是选取不同的基底表示量子态，\emph{表象变换的实质正是基底变换}。
+
+进行表象变换，重要的任务是找到两个表象之间的变换矩阵，而这一变换矩阵的表达式取决于两个力学量分别为何，通常较为复杂，将在之后详细讨论。
+
+
+% ================================
+\subsubsection{统计诠释}
+
+显然，对式\eqref{eq:principles_superposition_discrete}所描述的量子态，测得力学量$q$取值为$q_1, q_2$的概率分布是仅仅由$a_1, a_2$确定的。
+按照量子力学的基本假定，这一概率应分别与表示系数的模平方成正比：
+\begin{equation}
+    \label{eq:principles_prob_discrete_prop}
+    P_{q_1} \propto \abs{a_1}^2, \quad P_{q_2} \propto \abs{a_2}^2.
+\end{equation}
+测量$q$的取值仅有$q_1, q_2$两种可能性，因此$P_{q_1}+P_{q_2}=1$，倘若我们令式\eqref{eq:principles_prob_discrete_prop}的正比关系改为相等，即
+\begin{equation}
+    \label{eq:principles_prob_discrete}
+    P_{q_1} = \abs{a_1}^2, \quad P_{q_2} = \abs{a_2}^2,
+\end{equation}
+只需要表示系数满足\emph{归一条件}（normalization condition）：
+\begin{equation}
+    \label{eq:principles_norm_discrete}
+    \abs{a_1}^2 + \abs{a_2}^2 = 1.
+\end{equation}
+
+这样我们就得到了普遍情形下力学量$q$测值概率的表式：
+\begin{tcolorbox}
+
+\paragraph{离散取值情形}
+\begin{equation}
+    P_{q_n} = \abs{a_n}^2,
+\end{equation}
+归一条件
+\begin{equation}
+    \sum_n{\abs{a_n}^2} = 1.
+\end{equation}
+
+\paragraph{连续取值情形}
+\begin{equation}
+    P(q) = \abs{\psi(q)}^2,
+\end{equation}
+归一条件
+\begin{equation}
+    \int \dd q \abs{\psi(q)}^2 = 1.
+\end{equation}
+
+\end{tcolorbox}
+
+这就是\emph{Born定则}，是量子力学的其中一项基本公设，其将量子系统的叠加态与力学量测值概率联系在一起。
+
+
+% =================================================
+\subsection{力学量算符}
+\label{subsec:principles_operator}
+
+% ================================
+\subsubsection{\texorpdfstring{力学量的平均值\quad 力学量算符}{力学量的平均值  力学量算符}}
+
+获得了力学量测值的概率分布后，我们接下来考虑力学量的平均值（也称期望值，expectation value）。
+
+在$q$表象中，我们很容易就能写出力学量$q$的平均值$\expval{q}$的表式：
+\begin{equation}
+    \label{eq:principles_q_expval}
+    \expval{q} = \sum_n{q_n \abs{a_n}^2} =
+    \begin{bmatrix}
+        a_1 & a_2 & \cdots
+    \end{bmatrix}^*
+    \begin{bmatrix}
+        q_1 \\ & q_2 \\ & & \ddots
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_1 \\ a_2 \\ \vdots
+    \end{bmatrix}
+    = \bm{a}^\dag\ \diag(q_1, q_2, \cdots)\ \bm{a},
+\end{equation}
+这里我们记Hermitian共轭$\bm{a}^\dag = \bm{a}^{\rm{T}*}$，并且将平均值的表式写成了$\bm{x}^\dag \hat{q} \bm{x}$的形式，其中$\hat{q}$是一个线性算符（在离散变量时表现为矩阵），而$\bm{x}$是量子态在该表象下的表示系数。
+我们看到，在$q$表象下，算符$\hat{q}$对应的矩阵$Q^{(q)}$是对角的\footnote{量子态在不同表象下有不同的表示，算符也同样如此。}。
+采用Dirac记号，力学量的平均值也可以记作$\mel{\psi}{\hat{q}}{\psi}$，有时也可以略去两侧的$\psi$，直接写作$\expval{q}$。
+
+倘若选取了其他表象（例如$p$表象），式\eqref{eq:principles_q_expval}依然成立，但我们已知的是$p$表象中的表示系数$\bm{b}$而非$\bm{a}$，这便需要我们思考如何用$\bm{b}$表示$\expval{q}$。
+通过\ref{subsec:principles_quantum_state}节所述的表象变换，我们已经获得了$\bm{b}$与$\bm{a}$之间的关系，于是我们可以将式\eqref{eq:principles_q_expval}中$\bm{a}$换为$\bm{b}$：
+\begin{equation}
+    \label{eq:principles_q_expval_p_rep}
+    \expval{q}
+    = (S^{-1} \bm{b})^\dag\ \diag(q_1, q_2, \cdots)\ (S^{-1} \bm{b})
+    = \bm{b}^\dag\ [S\ \diag(q_1, q_2, \cdots)\ S^{-1}]\ \bm{b}
+\end{equation}
+这里利用了$S^\dag = S^{-1}$。
+
+我们通过式\eqref{eq:principles_q_expval_p_rep}发现，在已知表象变换矩阵$S$的情况下，在$p$表象下，力学量$q$的平均值依然可以被写为$\bm{x}^\dag \hat{q}\bm{x}$的形式，不过，此时的算符$\hat{q}$对应的矩阵$Q^{(p)}$不再是对角的，并且与在$q$表象中的对应矩阵$Q^{(q)}$存在如下的对应关系：
+\begin{equation}
+    Q^{(p)} = S Q^{(q)} S^{-1},
+\end{equation}
+即它们通过表象变换矩阵所对应的幺正变换联系在一起。
+
+现在我们可以归纳得到这样的结论：
+\emph{量子力学中的力学量可以被表为一个线性算符，同一算符在不同的表象下有着不同的具体形式，通过表象变换相联系。}
+
+我们在线性代数中学过，矩阵的本征值和本征向量不随基底的变化而变化，对于一个力学量算符，其本征值和本征态矢亦与表象无关。
+从式\eqref{eq:principles_q_expval}中，我们发现
+\begin{equation}
+    \hat{q} \ket{\psi_{q_n}} = q_n \ket{\psi_{q_n}}
+\end{equation}
+可见力学量算符$q$的本征态矢以及对应的本征值正是$\ket{\psi_{q_n}}$及其对应的测值$q_n$。
+\begin{tcolorbox}
+因此，我们称$\ket{\psi_{q_n}}$为力学量$q$的\emph{本征值}为$q_n$的\emph{本征态}。
+\end{tcolorbox}
+这一事实的价值在于，不论在哪一个表象下，只要获得力学量算符的表示形式，即可求得这个表象下该力学量的本征态矢及本征值。
+
+此外，在数学上，一个实物理量$f$对应的算符必须是一个\emph{Hermite算符}，其满足自己等于自身的Hermite共轭，即$f^\dag=f$。
+这一数学要求是与物理息息相关的：
+\begin{itemize}
+    \item{Hermite算符的所有本征值均是实的，这就是说，所有本征值$f_n$满足$f_n^*=f_n$；}
+    \item{Hermite算符的不同本征值对应的本征矢量均彼此正交，彼此正交的本征态才能作为描述任意量子态的正交基底。}
+\end{itemize}
+
+
+% ================================
+\subsubsection{\texorpdfstring{算符对易关系\quad 共同本征态}{算符对易关系  共同本征态}}
+
+
+
+
+% =================================================
+\subsection{\texorpdfstring{量子态的演化\quad \schrodinger 方程}{量子态的演化  \schrodinger 方程}}
+\label{subsec:principles_quantum_state_evolution}
+

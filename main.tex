@@ -13,6 +13,7 @@
 \usepackage{physics}    % symbols related to physics
 % \usepackage{ulem}       % strikethrough \sout
 \usepackage{xeCJKfntef} % for Chinese underline style
+\usepackage{tcolorbox}  % colored textbox environment
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=magenta} % hyperref setup
 % shortcuts
     % color
@@ -33,6 +34,8 @@
     % frequently-used notations
     \newcommand{\rr}{\bm{r}}
     \newcommand{\pp}{\bm{p}}
+    % \newcommand{\dag}{\dagger}    % dagger symbol [already implemented in the physics pkg]
+    \newcommand{\diag}{\rm{diag}\ } % diagonal matrix notation
     % others
     \catcode`\。=\active % replace 。with ．
     \newcommand{。}{\ifmmode\text{．}\else ．\fi} % replace 。with ．
@@ -52,7 +55,7 @@
 
 \input{preface.tex}
 \pagebreak
-\input{sec1_intro.tex}
+\input{sec1_principles.tex}
 \pagebreak
 
 \end{document}
