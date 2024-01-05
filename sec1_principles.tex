@@ -116,7 +116,7 @@
 \begin{bmatrix}
     \bra{\psi_{p_1}} & \bra{\psi_{p_2}} & \cdots
 \end{bmatrix}^{\rm{T}}$
-\footnote{我们记列矢量$\ket{\psi}$的共轭转置为$\bra{\psi}$，即$\bra{\psi}=\ket{\psi}^{\rm{T}*}$，于是矢量的内积就很自然地写作$\braket{\psi}{\phi}$。}，
+\footnote{我们记列矢量$\ket{\psi}$的共轭转置为$\bra{\psi}$，即$\bra{\psi}=\ket{\psi}^{\rm{T}*}$，于是矢量的内积（这里的内积是指$\sum a_n^* b_n$）就很自然地写作$\braket{\psi}{\phi}$。}，
 利用归一条件$\braket{\psi}{\psi}\equiv 1$，
 我们得到
 \begin{equation}
@@ -277,17 +277,127 @@
 这一数学要求是与物理息息相关的：
 \begin{itemize}
     \item{Hermite算符的所有本征值均是实的，这就是说，所有本征值$f_n$满足$f_n^*=f_n$；}
-    \item{Hermite算符的不同本征值对应的本征矢量均彼此正交，彼此正交的本征态才能作为描述任意量子态的正交基底。}
+    \item{Hermite算符的不同本征值对应的本征矢量均彼此正交，这是说，有$\braket{f_m}{f_n} = \delta_{mn}$，彼此正交的本征态才能作为描述任意量子态的正交基底。}
 \end{itemize}
 
 
 % ================================
 \subsubsection{\texorpdfstring{算符对易关系\quad 共同本征态}{算符对易关系  共同本征态}}
 
+当我们同时考虑两个力学量$f$与$g$时，我们关心的问题是这两个力学量能否同时拥有定值，即这两个力学量对应的算符能否拥有共同的本征态。
 
+事实上得到这一情形所满足的条件非常容易。
+我们令量子态$\ket{\psi}$分别为力学量$f$和$g$的本征值为$f_m, g_n$的本征态，即
+\begin{equation}
+    \hat{f}\ket{\psi} = f_m\ket{\psi},\quad \hat{g}\ket{\psi} = g_n\ket{\psi}.
+\end{equation}
+当我们同时将$\hat{f},\hat{g}$作用于态矢上时，理应有
+\begin{equation}
+    \hat{f}\hat{g}\ket{\psi} = \hat{f}(\hat{g}\ket{\psi}) = g_n \hat{f}\ket{\psi} = g_n f_m \ket{\psi},
+\end{equation}
+并且如果交换$\hat{f},\hat{g}$的顺序，对结果也不会有影响。
+\begin{tcolorbox}
+据此我们可以得到\emph{两个力学量拥有共同本征态的条件：}$\hat{f}\hat{g}=\hat{g}\hat{f}$\emph{，或}
+\begin{equation}
+    [f,g] \coloneq \hat{f}\hat{g}-\hat{g}\hat{f} = 0,
+\end{equation}
+\emph{即这两个算符可对易（commutable）。}
+\end{tcolorbox}
+
+这一结论有什么价值？
+两个力学量算符对易，表明这两个力学量可以拥有共同的本征态，并同时拥有定值。
+在\ref{subsec:principles_quantum_state}节中我们提到，对量子体系的完备描述依赖于一组可以\emph{同时拥有定值}的力学量，而对易关系有助于我们寻找可能的力学量来构建一组\emph{对易力学量完全集}，从而建立对某一个量子体系的完备描述。
+最为经典的一个例子便是氢原子电子态的四个两两对易的力学量：能量$H$、角动量平方$L^2$、角动量$z$分量$L_z$与电子自旋$z$分量$s_z$。
+此外，在\ref{subsec:principles_time_evolution}节中，我们还将发现，与Hamiltonian算符$H$的对易关系还意味着力学量的守恒性。
+
+% ================================
+\subsubsection{Heisenberg不确定度关系}
+
+我们讨论一个量子体系的力学量测值的不确定度问题，用标准差来衡量不确定度：
+\begin{equation}
+    \Delta f \coloneq \sqrt{(f-\expval{f})^2}.
+\end{equation}
+
+我们发现，如果量子体系处于力学量$f$的其中一个本征态，那么对$f$进行测量必然始终得到对应的本征值，因此其不确定度必然为零。
+对于两个可对易的力学量$f,g$，那么对于其共同本征态，其不确定度也必然均为零。
+倘若$f,g$是两个一般的不可对易的力学量，其不能拥有共同本征态，因此其不确定度一般不能同时为零，即$\Delta f \cdot \Delta g > 0$。
+\begin{tcolorbox}
+\emph{Heisenberg不确定度关系}给出了对于任意量子态$\ket{\psi}$，$\Delta f \cdot \Delta g$的下限：
+\begin{equation}
+    \label{eq:principle_uncertainty_relation}
+    \Delta f \cdot \Delta g \geq \frac12 \abs{\braket{\psi}{[f,g]}{\psi}}.
+\end{equation}
+\end{tcolorbox}
+这一关系也被称作“测不准关系”。
+在此强调，对于一个给定的量子态，其力学量测值的概率分布是确定的，因此其不确定度也是确定的，而不确定度关系仅仅是给出对于任何量子态，该力学量不确定度均满足的下限，因此对于给定的量子态，不等式有可能恰好取等，也可能取大于，但不会取小于。
+
+Heisenberg不确定度关系最著名的例子自然是\emph{坐标—动量不确定度关系}。
+对于一维坐标$x$与动量$p_x$，其对易子$[x,p_x]=\ii\hbar$，因此
+\begin{equation}
+    \label{eq:principle_uncertainty_relation_x_px}
+    \Delta x \cdot \Delta p_x \geq \frac{\hbar}{2},
+\end{equation}
+这一对易关系将在下一章详细阐述。
 
 
 % =================================================
-\subsection{\texorpdfstring{量子态的演化\quad \schrodinger 方程}{量子态的演化  \schrodinger 方程}}
-\label{subsec:principles_quantum_state_evolution}
+\subsection{量子态的演化}
+\label{subsec:principles_time_evolution}
 
+一个经典力学系统会随时间演化，一个量子系统自然也不例外。
+
+% ================================
+\subsubsection{\schrodinger 方程}
+
+\begin{tcolorbox}
+量子态的演化遵循\schrodinger 方程：
+\begin{equation}
+    \label{eq:principle_Schrodinger_equation}
+    \ii \hbar \partial_t \ket{\psi(t)} = \hat{H}(t) \ket{\psi(t)}.
+\end{equation}
+\end{tcolorbox}
+这里$H$是Hamiltonian量。
+倘若Hamiltonian不含时，可以将$\ket{\psi(t)}$写成分离变量形式：$\ket{\psi(t)}=\ket{\psi}T(t)$，代入式\eqref{eq:principle_Schrodinger_equation}，可分离出关于$\ket{\psi}, T(t)$的两个方程
+\begin{equation}
+    \hat{H} \ket{\psi} = E \ket{\psi},\quad \ii\hbar T'(t) = E T(t),
+\end{equation}
+后者的解为$T(t) = \exp (-\ii E t/\hbar)$，前者则是一个与时间无关的偏微分方程，称为\emph{定态\schrodinger 方程}，其解与时间无关。
+\begin{tcolorbox}
+总的来说，若Hamiltonian不含时，\schrodinger 方程的解$\ket{\psi(t)}$能表为分离变量形式：
+\begin{equation}
+    \ket{\psi(t)} = \sum_n \ket{\psi_{E_n}} \ee^{-\ii E t/\hbar},
+\end{equation}
+其中$\ket{\psi_{E_n}}$是\emph{定态\schrodinger 方程}
+\begin{equation}
+    \hat{H} \ket{\psi} = E \ket{\psi}
+\end{equation}
+的本征值为$E_n$的解。
+具有确定能量$E$的态，称为\emph{定态}，\emph{定态的任何不显含时间的力学量的平均值与测值概率分布均不随时间改变}。
+\end{tcolorbox}
+
+% ================================
+\subsubsection{Heisenberg方程}
+
+我们也可以研究可观测的力学量的平均值$\expval{f}$随时间的演化方程。
+将$\expval{f}=\mel{\psi}{f}{\psi}$对时间求全导数：
+\begin{equation}
+\begin{aligned}
+\frac{\dd \expval{f}}{\dd t}
+&= \frac{\dd}{\dd t} \mel{\psi}{f}{\psi} \\
+&= \mel{\pd_t \psi}{f}{\psi} + \mel{\psi}{\pd_t f}{\psi} + \mel{\psi}{f}{\pd_t \psi} \\
+&= \mel{\psi}{\left(\frac{H}{\ii\hbar}\right)^\dag f}{\psi} + \expval{\pd_t f} + \mel{\psi}{f \frac{H}{\ii\hbar}}{\psi} \\
+&= \underbrace{-\frac{1}{\ii\hbar}}_{(1/\ii\hbar)^\dag}\mel{\psi}{H f}{\psi} + \expval{\pd_t f} + \frac{1}{\ii\hbar}\mel{\psi}{fH}{\psi} \\
+&= \frac{1}{\ii\hbar}\expval{[f,H]} + \expval{\pd_t f},
+\end{aligned}
+\end{equation}
+\begin{tcolorbox}
+于是我们就得到了\emph{Heisenberg方程}:
+\begin{equation}
+    \frac{\dd \expval{f}}{\dd t} = \frac{1}{\ii\hbar}\expval{[f,H]} + \expval{\pd_t f},
+\end{equation}
+其描述了\emph{力学量的时间演化规律}。
+\end{tcolorbox}
+
+通过Heisenberg方程我们发现，对于不显含时间的力学量$f$，若其与Hamiltonian量对易，那么就有$\dd \expval{f}\dd t = 0$。
+这是说，\emph{与Hamiltonian量对易，且不含时的力学量的测值概率分布与平均值均不随时间改变，即为守恒量}
+\footnote{注意：对于非定态，守恒力学量的测值概率分布与平均值均不随时间改变。}。
