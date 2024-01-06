@@ -14,6 +14,7 @@
 % \usepackage{ulem}       % strikethrough \sout
 \usepackage{xeCJKfntef} % for Chinese underline style
 \usepackage{tcolorbox}  % colored textbox environment
+\tcbuselibrary{breakable}   % tcolorbox setup
 \usepackage[angle=0, scale=0.5]{draftwatermark}
 \SetWatermarkText{\includegraphics{TheStarAlight_logo.png}}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=magenta} % hyperref setup
@@ -38,6 +39,7 @@
     \newcommand{\pp}{\bm{p}}
     % \newcommand{\dag}{\dagger}    % dagger symbol [already implemented in the physics pkg]
     \newcommand{\diag}{\rm{diag}\ } % diagonal matrix notation
+    \newcommand{\eps}{\varepsilon}
     % others
     \catcode`\。=\active % replace 。with ．
     \newcommand{。}{\ifmmode\text{．}\else ．\fi} % replace 。with ．
@@ -50,7 +52,7 @@
 \author{\Large \textsc{Mingyu Zhu}}
 \date{
     \today \\
-    \normalsize \textit{Edition 0.1 Build 1}
+    \normalsize \textit{Edition 0.1 Build 2}
 }
 
 \setcounter{page}{0}
@@ -62,6 +64,8 @@
 \input{preface.tex}
 \pagebreak
 \input{sec1_principles.tex}
+\pagebreak
+\input{sec2_coord_moment_rep.tex}
 \pagebreak
 
 \end{document}

@@ -1,0 +1,272 @@
+
+\section{坐标表象与动量表象}
+\label{sec:coord_moment_rep}
+
+本章我们将在读者所熟知的坐标（$\rr$）与动量（$\pp$）表象下探讨量子力学基本原理的表现形式。
+我们刻意将这一章与第\ref{sec:principles}章分开，是为了强调，坐标表象与动量表象下的
+
+% =================================================
+\subsection{\texorpdfstring{坐标算符与动量算符\quad 正则对易关系}{坐标算符与动量算符  正则对易关系}}
+\label{subsec:cmr_operators}
+
+% ================================
+\subsubsection{正则对易关系}
+
+坐标表象与动量表象之间的联系是通过对易关系建立起来的。
+\begin{tcolorbox}
+\emph{坐标与动量这一对共轭变量的对易关系是}
+\begin{equation}
+    \label{eq:cmr_commutator}
+    [x, p_x] = \ii\hbar,
+\end{equation}
+其中$\hbar=h/2\pi$是\emph{约化Planck常数}。
+\end{tcolorbox}
+通过这一对易关系，我们可以构建出坐标与动量算符在相应表象中的表示，并进一步导出它们的表象变换。
+
+\begin{tcolorbox}
+\textbf{注意}
+\begin{itemize}
+    \item{坐标与坐标、动量与动量之间均彼此对易，}
+    \item{当推广至三维情形，不同方向的坐标与动量分量均彼此对易，}
+\end{itemize}
+即对于$i,j$取$x,y,z$时，有
+\begin{equation}
+    [q_i, q_j]=0,\quad [p_i, p_j]=0,\quad [q_i,p_j]=\ii\hbar\delta_{ij}.
+\end{equation}
+\end{tcolorbox}
+
+
+% ================================
+\subsubsection{坐标、动量算符的表示}
+
+我们首先研究坐标表象。
+坐标表象下，我们选取了坐标$\rr$的本征态作为描述任意量子态的基底，因此一个任意量子态$\ket{\psi}$应该可以表为一系列坐标本征态的叠加：
+\begin{equation}
+    \ket{\psi} = \int \dd\rr' f(\rr') \ket{\psi_{\rr'}}
+\end{equation}
+这里的$f(\rr)=\braket{\psi_{\rr}}{\psi}$正是坐标为$\rr$的坐标本征态的叠加系数，因此$f$表现为一个以坐标为自变量的复值函数，我们一般直接用$\psi$记号，称为\emph{（坐标）波函数（wavefunction）}。
+
+\begin{tcolorbox}
+在坐标表象下，坐标算符应当是对角的，且其对应本征值就是坐标值本身，因此其在坐标表象下的表示应为
+\begin{equation}
+    \hat{\rr}^{(\rr)} = \rr.
+\end{equation}
+一维动量$p_x$的算符表达式可以从式\eqref{eq:cmr_commutator}中得出：
+\begin{equation}
+    \hat{p}_x^{(\rr)} = -\ii\hbar\pd_x,
+\end{equation}
+可以验证，对于任意波函数$\psi(\rr)$，都有
+\begin{equation}
+    [x,\hat{p}_x] \psi(\rr) = -\ii\hbar [x\cdot\pd_x\psi(\rr) - \pd_x\cdot (x\psi(\rr))] = \ii\hbar \psi(\rr).
+\end{equation}
+对于三维动量$\pp=\{p_x,p_y,p_z\}$，有
+\begin{equation}
+    \hat{\pp}^{(\rr)} = -\ii\hbar
+    \begin{bmatrix}
+        \pd_x \\ \pd_y \\ \pd_z
+    \end{bmatrix}
+    = -\ii\hbar\del.
+\end{equation}
+\end{tcolorbox}
+
+在动量表象中，一个量子态被表为一系列动量本征态的叠加，叠加系数称为动量波函数（momentum wavefunction），记为$\psi(\pp)=\braket{\psi_{\pp}}{\psi}$。
+\begin{tcolorbox}
+    在动量表象中，动量算符是对角的，为
+    \begin{equation}
+        \hat{\pp}^{(\pp)} = \pp;
+    \end{equation}
+    坐标算符的表示为
+    \begin{equation}
+        \hat{\rr}^{(\pp)} = \ii\hbar\del_{\pp}.
+    \end{equation}
+
+    \textbf{注意}\quad 坐标表象与动量表象下的算符关系不是简单地对换算符形式。
+    动量算符在坐标表象下的表示中，微分算子的微分变量是坐标（显然，在坐标表象下，自变量只有坐标），而坐标算符在动量表象下的表示中，微分算子的微分变量是动量（因此特地予以标注）。
+    此外，这两个算符形式相差一个负号，请予注意。
+\end{tcolorbox}
+
+\begin{tcolorbox}[breakable, colframe=blue, colback=blue!10, title={\textbf{含坐标、动量算符的对易子的计算}}]
+
+    对易子有以下几个重要性质（$f,g,h$为算符，$c$为常数）：
+    \begin{itemize}
+        \item{$[f,g]=-[g,f]$\quad（交换取负）}
+        \item{$[cf, g]=[f,cg]=c[f,g]$\quad （常数可提出）}
+        \item{$[f+g, h]=[f,h]+[g,h]$\quad （算符加法分配）}
+        \item{$[fg, h]=f[g,h]+[f,h]g$\quad （算符乘法分配\footnote{可以理解为在等号右侧的两项中：前者，$g$将左侧的$f$“推”至算符外边；后者，$f$将右侧的$g$“推”至算符外边。}）}
+    \end{itemize}
+
+    在计算含坐标、动量算符时注意以下几个可能的技巧：
+    \begin{itemize}
+        \item{含$r^2, p^2$的力学量，考虑拆为$x^2+y^2+z^2$或$p_x^2+p_y^2+p_z^2$。}
+        \item{含点乘的力学量，例如$\frac12(\rr\cdot\pp+\pp\cdot\rr)$，可考虑表为分量相乘形式：$\frac12(x p_x + p_x x + y p_y + p_y y + z p_z + p_z z)$。}
+        \item{对于较为复杂的力学量，例如$1/r, 1/r^2$，考虑使用如下结论：
+            \begin{equation}
+                [\pp,F(\rr,\pp)] = -\ii\hbar\del_{\rr}F(\rr,\pp),\quad [\rr,F(\rr,\pp)] = \ii\hbar\del_{\pp}F(\rr,\pp).
+            \end{equation}
+        }
+        \item{运算结果为矢量的对易子，可以考虑分别证明各个分量。}
+    \end{itemize}
+
+    此外，角动量也是经常出现于习题的力学量。
+    角动量定义为$\bm{l}\coloneq\rr\times\pp$，其分量表示为
+    \begin{equation}
+        l_z = x p_y - y p_x,\quad l_x = y p_z - z p_y,\quad l_y = z p_x - x p_z.
+    \end{equation}
+    引入Levi-Civita符号$\eps_{ijk}$，其满足
+    \begin{equation}
+        \eps_{ijk} =
+        \begin{cases}
+            0,  & (i=j) \vee (j=k) \vee (i=k),\\
+            1,  & \rm{\ for\ even\ permutation\ }(i,j,k),\\
+            -1, & \rm{\ for\ odd\ permutation\ }(i,j,k).
+        \end{cases}
+    \end{equation}
+    可以以之表示角动量与其他力学量的对易关系：
+    \begin{equation}
+        [l_i, q_j] = \eps_{ijk} \ii\hbar q_k, \quad
+        [l_i, p_j] = \eps_{ijk} \ii\hbar p_k, \quad
+        [l_i, l_j] = \eps_{ijk} \ii\hbar l_k.
+    \end{equation}
+    关于角动量，还可证明
+    \begin{equation}
+        \bm{l} \times \bm{l} = \ii\hbar\bm{l},
+    \end{equation}
+    \begin{equation}
+        [l^2, l_i] = 0 \rm{\ for\ } i=x,y,z.
+    \end{equation}
+\end{tcolorbox}
+
+\begin{tcolorbox}[breakable, colframe=purple, colback=red!10, title={\textbf{关于连续力学量的算符}}]
+当我们讨论一个连续力学量时，态矢与算符该如何表示？
+首先我们需要明确，对于离散变量，态矢所对应的表示向量是有一一对应的本征值的，即我们选取了这样的对应方式：
+\begin{equation}
+    \overbrace{
+    \begin{bmatrix}
+        q_1 \\ q_2 \\ \vdots \\ q_n
+    \end{bmatrix}}^{\rm{quantity}}
+    \Longleftrightarrow
+    \overbrace{
+    \begin{bmatrix}
+        c_1 \\ c_2 \\ \vdots \\ c_n
+    \end{bmatrix}}^{\rm{coefficient}}.
+\end{equation}
+现在，对于连续变量，事实上我们也可以考虑一个类似的对应关系：
+\begin{equation}
+    \overbrace{
+    \begin{bmatrix}
+        q=0.0 \cdots 00 \\ q=0.0 \cdots 01 \\ q=0.0 \cdots 02 \\ \vdots
+    \end{bmatrix}}^{\rm{quantity}}
+    \Longleftrightarrow
+    \overbrace{
+    \begin{bmatrix}
+        \psi(0.0 \cdots 00) \\ \psi(0.0 \cdots 01) \\ \psi(0.0 \cdots 02) \\ \vdots
+    \end{bmatrix}}^{\rm{coefficient}},
+\end{equation}
+我们看到，一个函数可以被看作一个无穷维的、稠密的向量。
+
+如何理解态矢的内积\footnote{这里的内积，左矢需求共轭。}？
+我们知道，两个离散向量$\{a_n\},\{b_n\}$的内积可以写作
+\begin{equation}
+    \bm{a}\cdot\bm{b} \coloneq \sum_n a_n^* b_n,
+\end{equation}
+类比之下，函数$f(q), g(q)$的内积自然由求和变为积分：
+\begin{equation}
+    f \cdot g \coloneq \int \dd q\ f^*(q) g(q).
+\end{equation}
+
+如何理解线性算符？
+我们知道，离散变量的线性算符可以表为矩阵形式，其本质是对一个向量的线性操作，我们令$\bm{b}=Q\bm{a}$，那么：
+\begin{equation}
+    b_m = \sum_n Q_{mn} a_n,
+\end{equation}
+注意到，$Q_{mn}$贡献了从$a_n$到$b_m$的线性叠加。
+那么对于连续变量，我们自然也可以写出这一算符的形式，令$g=Qf$，那么：
+\begin{equation}
+    \label{eq:cmr_operator_cont}
+    g(q') = Q(q',q) f(q),
+\end{equation}
+$Q(q',q)$即贡献了从$f(q)$到$g(q')$的线性叠加。
+
+那么求导算子$\partial_q$又如何理解？
+如果我们将函数$f(q)$写成离散形式，令$q_{n+1} = q_n + \Delta q$，我们可以依中心差分写出导数的近似值：
+\begin{equation}
+    f'(q_n) \approx \frac{f(q_{n+1})-f(q_{n-1})}{2\Delta q},
+\end{equation}
+那么我们可以依此写出求导算子的矩阵形式：
+\begin{equation}
+    \partial_q \approx \frac{1}{2\Delta q}
+    \begin{bmatrix}
+        0  &  1 \\
+        -1 &  0 &  1    \\
+           & -1 &  0    &\ddots \\
+           &    &\ddots &\ddots \\
+    \end{bmatrix}.
+\end{equation}
+于是我们可以看到，其实求导也是一种线性运算，也可以近似写成矩阵的形式。
+\end{tcolorbox}
+
+
+% =================================================
+\subsection{\texorpdfstring{坐标与动量的本征态\quad 表象变换}{坐标与动量的本征态  表象变换}}
+\label{subsec:cmr_eigen_rep_trans}
+
+% ================================
+\subsubsection{坐标表象}
+
+我们首先研究坐标、动量本征态在坐标表象下的表示。
+
+\begin{tcolorbox}
+在坐标表象下，坐标为$\rr_0$的本征态可以通过本征方程$\hat{\rr}\psi_{\rr_0}(\rr) = \rr\psi_{\rr_0}(\rr) = \rr_0 \psi_{\rr_0}(\rr)$求得，归一化的坐标本征态波函数为
+\begin{equation}
+    \psi_{\rr_0}(\rr) = \delta(\rr-\rr_0).
+\end{equation}
+而动量为$\pp_0$的动量本征态通过$\hat{\pp}\psi_{\pp_0}(\rr) = -\ii\hbar\del\psi_{\pp_0}(\rr) = \pp_0 \psi_{\pp_0}(\rr)$求得，其波函数为
+\begin{equation}
+    \psi_{\pp_0}(\rr) = \frac{1}{(2\pi\hbar)^{3/2}} \ee^{\ii\pp_0\cdot\rr/\hbar}.
+\end{equation}
+注意，这里的归一化系数的选取使得该态在动量空间归一化为$\delta$函数。
+我们可以看到，\emph{动量本征态的坐标波函数表现为平面波的形式}，其波长为$\lambda=2\pi\hbar/p_0=h/p_0$，这正是\emph{de Broglie关系}。
+\end{tcolorbox}
+
+求得坐标、动量本征态在同一表象下的表示后，我们就可以求解坐标、动量之间的表象变换关系，回忆式\eqref{eq:principles_rep_trans_mat}与\eqref{eq:cmr_operator_cont}，我们写出$\rr\rightarrow\pp$表象变换的矩阵元
+\begin{equation}
+    S(\pp,\rr) = \braket{\psi_{\pp}}{\psi_{\rr}} = \int\dd\rr \psi_{\pp}^*(\rr) \psi_{\rr}(\rr) = \frac{1}{(2\pi\hbar)^{3/2}} \ee^{-\ii\pp\cdot\rr/\hbar},
+\end{equation}
+\begin{tcolorbox}
+于是我们可以写出$\rr\rightarrow\pp$的表象变换\footnote{注意，这里使用了一个投影算符$\ket{\psi_{\rr}}\bra{\psi_{\rr}}$，其满足$\int\dd\rr\ket{\psi_{\rr}}\bra{\psi_{\rr}}=1$。}：
+\begin{equation}
+    \braket{\psi_{\pp}}{\psi}
+    = \int\dd\rr \braket{\psi_{\pp}}{\psi_{\rr}}\braket{\psi_{\rr}}{\psi}
+    = \int\dd\rr S(\pp,\rr)\psi(\rr)
+    = \int\dd\rr \frac{\ee^{-\ii\pp\cdot\rr/\hbar}}{(2\pi\hbar)^{3/2}} \psi(\rr).
+\end{equation}
+我们发现，这与Fourier变换具有完全相同的形式。
+\end{tcolorbox}
+
+% ================================
+\subsubsection{动量表象}
+
+在动量表象下，情形也是类似的：
+动量$\pp_0$的本征态为
+\begin{equation}
+    \psi_{\pp_0}(\pp) = \delta(\pp-\pp_0).
+\end{equation}
+坐标$\rr_0$的本征态为
+\begin{equation}
+    \psi_{\rr_0}(\pp) = \frac{1}{(2\pi\hbar)^{3/2}} \ee^{-\ii\rr_0\cdot\pp/\hbar}.
+\end{equation}
+而$\pp\rightarrow\rr$的表象变换矩阵$S^{-1}$，利用$S$的幺正性，可以写出其矩阵元
+\begin{equation}
+    S^{-1}(\rr,\pp) = S^\dag (\rr,\pp) = S^*(\pp,\rr)
+    = \frac{1}{(2\pi\hbar)^{3/2}} \ee^{\ii\rr\cdot\pp/\hbar},
+\end{equation}
+于是表象变换为
+\begin{equation}
+    \braket{\psi_{\rr}}{\psi}
+    = \int\dd\pp \braket{\psi_{\rr}}{\psi_{\pp}}\braket{\psi_{\pp}}{\psi}
+    = \int\dd\pp S^{-1}(\rr,\pp)\psi(\pp)
+    = \int\dd\pp \frac{\ee^{\ii\rr\cdot\pp/\hbar}}{(2\pi\hbar)^{3/2}} \psi(\pp).
+\end{equation}
+
+在进行表象变换时，牢记在心：原表象、目标表象分别为何，积分变量是原表象的变量！
+
