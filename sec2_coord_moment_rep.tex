@@ -3,7 +3,7 @@
 \label{sec:coord_moment_rep}
 
 本章我们将在读者所熟知的坐标（$\rr$）与动量（$\pp$）表象下探讨量子力学基本原理的表现形式。
-我们刻意将这一章与第\ref{sec:principles}章分开，是为了强调，坐标表象与动量表象下的
+我们刻意将这一章与第\ref{sec:principles}章分开，是为了强调，坐标表象与动量表象仅仅是量子力学众多表象的其中两种。
 
 % =================================================
 \subsection{\texorpdfstring{坐标算符与动量算符\quad 正则对易关系}{坐标算符与动量算符  正则对易关系}}
@@ -269,4 +269,23 @@ $Q(q',q)$即贡献了从$f(q)$到$g(q')$的线性叠加。
 \end{equation}
 
 在进行表象变换时，牢记在心：原表象、目标表象分别为何，积分变量是原表象的变量！
+
+
+% =================================================
+\subsection{坐标表象下的\schrodinger 方程}
+\label{subsec:cmr_schrodinger}
+
+我们来考察一个处于保守势场$V(\rr)$中质量为$m$的粒子，其Hamiltonian量为
+\begin{equation}
+    H = \frac{p^2}{2m} + V(\rr).
+\end{equation}
+我们在坐标表象下研究这个问题，将动量算符的具体形式$\pp\rightarrow -\ii\hbar\del$代入\schrodinger 方程，可得
+\begin{tcolorbox}
+\emph{坐标表象下的\schrodinger 方程}：
+\begin{equation}
+    \ii\hbar\pd_t \psi(\rr,t) = H\psi(\rr,t) = \left[-\frac{\hbar^2}{2m}\nabla^2 + V(\rr)\right]\psi(\rr,t).
+\end{equation}
+\end{tcolorbox}
+这一方程将在之后的问题中频繁出现。
+我们看到，这一方程形似波动方程，这也是\schrodinger 所提出的量子力学框架被称为“波动力学”的原因——\schrodinger 方程揭示了物质波的演化规律。
 
