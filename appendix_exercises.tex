@@ -173,3 +173,228 @@
     \hfill $\square$
 
 \end{tcolorbox}
+
+\begin{tcolorbox}[breakable, title={\textbf{自旋}}]
+    \paragraph{题目}
+    电子在$t=0$时刻处于$s_z=\hbar/2$的本征态上。
+    其受到沿$x$方向匀强磁场$B$的作用，其Hamiltonian为
+    \begin{equation}
+        H = \frac{eB}{mc} s_x.
+    \end{equation}
+    求：
+    \begin{enumerate}
+        \item $s_z$表象下自旋算符三分量$s_x,s_y,s_z$的矩阵形式，及其对应关系；
+        \item $t=0$时刻，$s_x,s_y,s_z$各自的平均值；
+        \item $t$时刻，$s_x,s_y,s_z$各自的平均值。
+    \end{enumerate}
+
+    \paragraph{解答}
+
+    研究量子力学问题，明确自己处于什么表象十分重要，并注意，有一些概念是与表象无关的（例如，对易子\footnote{尽管如此，有时对易子也可以在具体的表象中求解。}）。
+
+    这一题中，我们选择了$s_z$表象。
+
+    \paragraph{(1)}
+
+    书本上定义了与自旋有关的Pauli算符，在$\sigma_z$表象下，其表达式是
+    \begin{equation}
+        \sigma_x =
+        \begin{bmatrix}
+            0 & 1 \\ 1 & 0\\
+        \end{bmatrix},\quad
+        \sigma_y =
+        \begin{bmatrix}
+            0 & -\ii \\ \ii & 0\\
+        \end{bmatrix},\quad
+        \sigma_z =
+        \begin{bmatrix}
+            1 & 0 \\ 0 & -1\\
+        \end{bmatrix},
+    \end{equation}
+    其与自旋算符的关系是
+    \begin{equation}
+        \bm{s} = \frac{\hbar}{2} \bm{\sigma}.
+    \end{equation}
+    这说明$s_z$与$\sigma_z$表象是同一个表象，无须进行表象变换。
+    因此我们可以直接写出自旋算符各分量的表达式
+    \begin{equation}
+        s_x = \frac{\hbar}{2}
+        \begin{bmatrix}
+            0 & 1 \\ 1 & 0\\
+        \end{bmatrix},\quad
+        s_y = \frac{\hbar}{2}
+        \begin{bmatrix}
+            0 & -\ii \\ \ii & 0\\
+        \end{bmatrix},\quad
+        s_z = \frac{\hbar}{2}
+        \begin{bmatrix}
+            1 & 0 \\ 0 & -1\\
+        \end{bmatrix}.
+    \end{equation}
+
+    \paragraph{(2)}
+
+    我们在$s_z$表象下求解$s_x,s_y,s_z$的平均值。
+    初始时刻，量子态在$s_z$表象下的表示为
+    \begin{equation}
+        \ket{\psi(0)} =
+        \begin{bmatrix}
+            \ket{\up} & \ket{\down}
+        \end{bmatrix}
+        \begin{bmatrix}
+            1 \\ 0
+        \end{bmatrix}.
+    \end{equation}
+    于是我们可以据此求解自旋各分量的平均值：
+    \begin{equation}
+        \expval{s_x} = \mel{\psi}{s_x}{\psi} = \frac{\hbar}{2}
+        \begin{bmatrix}
+            1 & 0
+        \end{bmatrix}
+        \begin{bmatrix}
+            0 & 1 \\ 1 & 0\\
+        \end{bmatrix}
+        \begin{bmatrix}
+            1 \\ 0
+        \end{bmatrix}
+        = 0;
+    \end{equation}
+    \begin{equation}
+        \expval{s_y} = \mel{\psi}{s_y}{\psi} = \frac{\hbar}{2}
+        \begin{bmatrix}
+            1 & 0
+        \end{bmatrix}
+        \begin{bmatrix}
+            0 & -\ii \\ \ii & 0\\
+        \end{bmatrix}
+        \begin{bmatrix}
+            1 \\ 0
+        \end{bmatrix}
+        = 0;
+    \end{equation}
+    \begin{equation}
+        \expval{s_z} = \mel{\psi}{s_z}{\psi} = \frac{\hbar}{2}
+        \begin{bmatrix}
+            1 & 0
+        \end{bmatrix}
+        \begin{bmatrix}
+            1 & 0 \\ 0 & -1\\
+        \end{bmatrix}
+        \begin{bmatrix}
+            1 \\ 0
+        \end{bmatrix}
+        = \frac{\hbar}{2}.
+    \end{equation}
+
+    \paragraph{(3)}
+
+    考虑含时问题时，我们需要将量子态分解为各个能量本征态，并分别赋以时间相位。
+    这一步骤并非一定要在能量表象中进行，而可以在任意表象下进行。
+    我们仍然选择$s_z$表象。
+
+    首先，我们求取Hamiltonian算符的本征值和本征矢量在$s_z$表象下的表示，这一求解过程可以在任意表象下进行。
+    Hamiltonian算符在$s_z$表象下的表示为
+    \begin{equation}
+        H^{(s_z)} = \frac{eB}{mc} s_x^{(s_z)} = \frac{eB}{mc}
+        \begin{bmatrix}
+            0 & 1 \\ 1 & 0\\
+        \end{bmatrix}.
+    \end{equation}
+    $s_z$表象下的定态\schrodinger 方程为
+    \begin{equation}
+        \underbrace{\frac{eB}{mc}
+        \begin{bmatrix}
+            0 & 1 \\ 1 & 0\\
+        \end{bmatrix}}_{H^{(s_z)}}
+        \begin{bmatrix}
+            \alpha \\ \beta
+        \end{bmatrix}
+        = E
+        \begin{bmatrix}
+            \alpha \\ \beta
+        \end{bmatrix},
+    \end{equation}
+    解之，得两个归一化能量本征态矢及其本征能量
+    \begin{equation}
+        \ket{E_+}^{(s_z)} =
+        \begin{bmatrix}
+            1/\sqrt{2} \\ 1/\sqrt{2}
+        \end{bmatrix},\quad
+        E_+ = \frac{eB}{mc};
+    \end{equation}
+    \begin{equation}
+        \ket{E_-}^{(s_z)} =
+        \begin{bmatrix}
+            1/\sqrt{2} \\ -1/\sqrt{2}
+        \end{bmatrix},\quad
+        E_- = -\frac{eB}{mc}.
+    \end{equation}
+
+    现在，我们将$t=0$时刻的量子态投影至这两个能量本征态上：
+    \begin{equation}
+    \begin{aligned}
+        & \quad\ \ket{\psi(0)} \\
+        &= \ket{E_+} \underbrace{{\braket{E_+}{\psi(0)}}}_{\rm{coefficient\ of\ }\ket{E_+}} + \ket{E_-} \underbrace{\braket{E_-}{\psi(0)}}_{\rm{coefficient\ of\ }\ket{E_-}} \\
+        &= \frac{1}{\sqrt{2}} \ket{E_+} + \frac{1}{\sqrt{2}} \ket{E_-},
+    \end{aligned}
+    \end{equation}
+
+    为方便计，我们置$E_0 = eB/mc$，$t$时刻的量子态是
+    \begin{equation}
+    \begin{aligned}
+        \ket{\psi(t)}
+        &= \frac{\ee^{-\ii E_0 t/\hbar}}{\sqrt{2}} \ket{E_+} + \frac{\ee^{\ii E_0 t/\hbar}}{\sqrt{2}} \ket{E_-} \\
+        &= \frac12 \left(\ee^{-\ii E_0 t/\hbar} + \ee^{\ii E_0 t/\hbar}\right) \ket{\up_{s_z}} + \frac12 \left(\ee^{-\ii E_0 t/\hbar} - \ee^{\ii E_0 t/\hbar}\right) \ket{\down_{s_z}},
+    \end{aligned}
+    \end{equation}
+    在$s_z$表象下的表示为
+    \begin{equation}
+        \ket{\psi(t)}^{(s_z)} =
+        \begin{bmatrix}
+            \cos(E_0 t/\hbar) \\ -\ii\sin(E_0 t/\hbar).
+        \end{bmatrix}
+    \end{equation}
+
+    现在，我们可以求解各个力学量的平均值。
+    因为$[s_x,H]=0$，所以$s_x$是守恒量，其测值平均值不随时间改变。
+    $s_y$的平均值是
+    \begin{equation}
+    \begin{aligned}
+        \expval{s_y}(t)
+        &= \mel{\psi(t)}{s_y}{\psi(t)} \\
+        &= \frac{\hbar}{2}
+        \begin{bmatrix}
+            \cos(E_0 t/\hbar) & \ii\sin(E_0 t/\hbar)
+        \end{bmatrix}
+        \begin{bmatrix}
+            0 & -\ii \\ \ii & 0\\
+        \end{bmatrix}
+        \begin{bmatrix}
+            \cos(E_0 t/\hbar) \\ -\ii\sin(E_0 t/\hbar)
+        \end{bmatrix} \\
+        &= -\frac{\hbar}{2} \sin(2E_0 t/\hbar) \\
+        &= -\frac{\hbar}{2} \sin(2 eBt/m\hbar c);
+    \end{aligned}
+    \end{equation}
+    $s_z$的平均值是
+    \begin{equation}
+    \begin{aligned}
+        \expval{s_z}(t)
+        &= \mel{\psi(t)}{s_z}{\psi(t)} \\
+        &= \frac{\hbar}{2}
+        \begin{bmatrix}
+            \cos(E_0 t/\hbar) & \ii\sin(E_0 t/\hbar)
+        \end{bmatrix}
+        \begin{bmatrix}
+            1 & 0 \\ 0 & -1\\
+        \end{bmatrix}
+        \begin{bmatrix}
+            \cos(E_0 t/\hbar) \\ -\ii\sin(E_0 t/\hbar)
+        \end{bmatrix} \\
+        &= \frac{\hbar}{2} \cos(2E_0 t/\hbar) \\
+        &= \frac{\hbar}{2} \cos(2 eBt/m\hbar c).
+    \end{aligned}
+    \end{equation}
+    \hfill $\square$
+
+\end{tcolorbox}
