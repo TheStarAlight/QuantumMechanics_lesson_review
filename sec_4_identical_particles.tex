@@ -1,0 +1,111 @@
+
+\section{全同粒子}
+\label{sec:identical_particles}
+
+全同粒子（identical particles）指不可区分的粒子，包含基本粒子（光子、电子、质子、中子）以及由基本粒子所组成的粒子，如原子核、原子、分子等。
+本章我们将简单讨论全同粒子体系的量子态描述，以及全同粒子的交换对称性所带来的特殊情况。
+
+% =================================================
+\subsection{全同粒子量子态的描述}
+\label{subsec:ip_state_desc}
+
+我们考虑一由两个全同粒子组成的体系，在$q$表象下，体系的量子态$\ket{\Psi}$应同时由两个粒子各自的量子态$\ket{\psi}_1,\ket{\psi}_2$描述：
+\begin{equation}
+    \braket{\psi_{q_1},\psi_{q_2}}{\Psi} = \Psi_{q_1, q_2},
+\end{equation}
+这里的量子态$\ket{\psi_{q_1},\psi_{q_2}}=\ket{\psi_{q_1}}_1 \ket{\psi_{q_2}}_2$表示两个粒子中第一个处于$\ket{\psi_{q_1}}$，第二个处于$\ket{\psi_{q_2}}$的状态。
+我们将看到，全同粒子体系的交换对称性将对体系的量子态提出一定要求，从而限制全同粒子体系实际波函数的形式。
+
+% =================================================
+\subsection{\texorpdfstring{交换对称性\quad Pauli不相容原理}{交换对称性  Pauli不相容原理}}
+\label{subsec:ip_sym}
+
+\begin{tcolorbox}
+    全同粒子体系的一大特点是\emph{“不可分辨”}。
+    这就是说，任何可观测量的测值概率分布在交换两个粒子时保持不变，称为\emph{“全同性原理”}，是量子力学的基本公设之一。
+\end{tcolorbox}
+
+我们考虑置换算符$P_{ij}$，其作用在于交换粒子$i,j$的全部坐标：
+\begin{equation}
+    P_{ij}\Psi(\cdots,q_i,\cdots,q_j,\cdots) = \Psi(\cdots,q_j,\cdots,q_i,\cdots),
+\end{equation}
+交换前后的量子态的力学量测值分布不应有变化，因此$\ket{\Psi}$与$P_{ij}\ket{\Psi}$最多只应当相差常数$C$。
+我们设$P_{ij}\ket{\Psi}=C\ket{\Psi}$，并对$\ket{\Psi}$作用两次置换算符：
+\begin{equation}
+    P_{ij}^2\ket{\Psi} = C^2 \ket{\Psi},
+\end{equation}
+作用两次后，波函数应当复原，因此$C^2=1$，于是我们知道置换算符的本征态有两个，分别满足
+\begin{equation}
+\begin{aligned}
+    P_{ij}\ket{\Psi}_{\rm{S}} &=  \ket{\Psi}_{\rm{S}}, \\
+    P_{ij}\ket{\Psi}_{\rm{A}} &= -\ket{\Psi}_{\rm{A}}, \\
+\end{aligned}
+\end{equation}
+前者的下标为Symmetric，称为\emph{对称量子态}；
+后者的下标为Anti-symmetric，称为\emph{反对称量子态}。
+
+实验表明，全同粒子体系的量子态交换对称性与粒子自旋有着确定的联系。
+凡自旋为整数倍$\hbar$的粒子，量子态是交换对称的，如$\pi$介子（$s=0$）、$\alpha$粒子（$s=0$）、光子（$s=\hbar$），称为\emph{Bose子（Bosen）}；
+凡自旋为半奇数倍$\hbar$的粒子，量子态是交换反对称的，如电子、质子和中子（$s=\hbar/2$），称为\emph{Fermi子（Fermion）}。
+
+满足交换对称/反对称原理的量子态如何构建？
+我们考虑二粒子双本征态情形，设两个粒子能够分别处于单粒子态$\ket{\psi_{q_1}},\ket{\psi_{q_2}}$。
+
+\begin{tcolorbox}
+\textbf{Bose子}\quad
+对于Bose子，量子态满足交换对称性，若$q_1\neq q_2$，我们可以将量子态写作归一化对称形式
+\begin{equation}
+    \ket{\psi_{q_1},\psi_{q_2}}_{\rm{S}}
+    = \frac{1}{\sqrt{2}} (1+P_{12}) \left[\ket{\psi_{q_1}}_1 \ket{\psi_{q_2}}_2\right]
+    = \frac{1}{\sqrt{2}} \left[\ket{\psi_{q_1}}_1 \ket{\psi_{q_2}}_2 + \ket{\psi_{q_2}}_1 \ket{\psi_{q_1}}_2\right],
+\end{equation}
+若$q_1=q_2=q$，则
+\begin{equation}
+    \ket{\psi_{q},\psi_{q}} = \ket{\psi_q}_1 \ket{\psi_q}_2.
+\end{equation}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Fermi子}\quad
+对于Fermi子，量子态满足交换反对称性，若$q_1\neq q_2$，有
+\begin{equation}
+    \ket{\psi_{q_1},\psi_{q_2}}_{\rm{A}}
+    = \frac{1}{\sqrt{2}} (1-P_{12}) \left[\ket{\psi_{q_1}}_1 \ket{\psi_{q_2}}_2\right]
+    = \frac{1}{\sqrt{2}}
+    \begin{vmatrix}
+        \ket{\psi_{q_1}}_1 & \ket{\psi_{q_1}}_2 \\
+        \ket{\psi_{q_2}}_1 & \ket{\psi_{q_2}}_2
+    \end{vmatrix},
+\end{equation}
+这种形式称为\emph{Slater行列式}；
+若$q=q_1=q_2$，则
+\begin{equation}
+    \ket{\psi_q,\psi_q}_{\rm{A}} = 0.
+\end{equation}
+这说明\emph{两个全同Fermi子不能同时处于同一个单粒子态，称为Pauli不相容原理。}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[breakable, colframe=blue, colback=blue!10, title={\textbf{Bose, Fermi与经典体系粒子的组合数计算}}]
+
+    一个常见的问题是计算Bose, Fermi与经典体系粒子的组合数：
+    $n$\emph{个全同粒子处于}$m$\emph{个可能的单粒子态，对于Bose子, Fermi子与经典粒子，可能有几种组合方式？}
+
+    对于经典粒子，粒子是完全可分辨的，因此粒子间互不相关，可能的组合数有
+    \begin{equation}
+        N_{\rm{classical}} = n^m.
+    \end{equation}
+
+    对于Fermi子，粒子不可分辨，可以用隔板法求取可能的组合数：
+    设置$m-1$个隔板，与$n$个粒子混合排列，这样$n$个粒子就被隔板分至$m$个态上，有$(n+m-1)!$种方式。
+    隔板与粒子分别不可分别，因此分别除以各自排列数$(m-1)!$与$n!$
+    \begin{equation}
+        N_{\rm{Fermi}} = \frac{(n+m-1)!}{(m-1)! n!}.
+    \end{equation}
+
+    对于Bose子，粒子不可分辨，且是互斥的，于是从$m\ (m>n)$个态中选取$n$个分别放入一个粒子即可，可能的组合数：
+    \begin{equation}
+        N_{\rm{Bose}} = P_m^n = \frac{m!}{n!(m-n)!}.
+    \end{equation}
+
+\end{tcolorbox}
