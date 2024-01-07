@@ -1,0 +1,175 @@
+
+\section{习题解答}
+\label{sec:exercises}
+
+
+\begin{tcolorbox}[breakable, title={\textbf{两个对易子的计算}}]
+    \paragraph{题目}
+    计算如下几个对易子：
+    \begin{enumerate}
+        \item
+            \begin{equation}
+                [\rr,H], [\pp,H]
+            \end{equation}
+            其中$H=\pp^2/2m + V(\rr)$；
+        \item
+        \begin{equation}
+                [p^2,\frac{1}{r}].
+            \end{equation}
+    \end{enumerate}
+
+    \paragraph{解答}
+
+    \paragraph{(1)}
+    利用结论
+    \begin{equation}
+        [\pp,F(\rr,\pp)] = -\ii\hbar\del_{\rr}F(\rr,\pp),\quad [\rr,F(\rr,\pp)] = \ii\hbar\del_{\pp}F(\rr,\pp),
+    \end{equation}
+    可得
+    \begin{equation}
+    \begin{aligned}\relax
+        [\rr, H]
+        &= \ii\hbar\del_{\pp}\left[\pp^2/2m + V(\rr)\right] \\
+        &= \ii\hbar\del_{\pp}\left[\pp^2/2m\right] \\
+        &= \ii\hbar\pp/m;
+    \end{aligned}
+    \end{equation}
+    \begin{equation}
+    \begin{aligned}\relax
+        [\pp, H]
+        &= -\ii\hbar\del_{\rr}\left[\pp^2/2m + V(\rr)\right] \\
+        &= -\ii\hbar\del V(\rr).
+    \end{aligned}
+    \end{equation}
+    \hfill$\square$
+
+    \paragraph{(2)}
+    考虑按算符乘积拆分成
+    \begin{equation}
+        [p^2,\frac{1}{r}] = \pp\cdot[\pp,\frac{1}{r}] + [\pp,\frac{1}{r}]\cdot\pp.
+    \end{equation}
+    接下来先计算$[\pp,\frac{1}{r}]$：
+    \begin{equation}
+        [\pp,\frac{1}{r}] = -\ii\hbar\del\frac{1}{r} = \ii\hbar\frac{\rr}{r^3}.
+    \end{equation}
+    代入即得
+    \begin{equation}
+        \pp\cdot[\pp,\frac{1}{r}] + [\pp,\frac{1}{r}]\cdot\pp = \ii\hbar\left( \frac{\rr}{r^3}\cdot\pp+\pp\cdot\frac{\rr}{r^3} \right),
+    \end{equation}
+    这一表达式可以继续化简，但\emph{不能直接代入动量算符在坐标表象中的表达式} $\hat{\pp}^{(\rr)}=-\ii\hbar\del$\footnote{对易子的计算无关表象，因此不能直接代入，而要使用之前的结论，构造对易子来求解。}：
+    \begin{equation}
+    \begin{aligned}
+        &\quad\ \ii\hbar\left( \frac{\rr}{r^3}\cdot\pp+\pp\cdot\frac{\rr}{r^3} \right) \\
+        &= \ii\hbar\left( 2\frac{\rr}{r^3}\cdot\pp - \frac{\rr}{r^3}\cdot\pp +\pp\cdot\frac{\rr}{r^3} \right) \\
+        &= \ii\hbar\left( 2\frac{\rr}{r^3}\cdot\pp + \left[\pp, \frac{\rr}{r^3}\right] \right) \\
+        &= \ii\hbar\left( 2\frac{\rr}{r^3}\cdot\pp - \ii\hbar\del\cdot\frac{\rr}{r^3} \right).
+    \end{aligned}
+    \end{equation}
+    \hfill$\square$
+
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[breakable, title={\textbf{径向动量算符}}]
+    \paragraph{题目}
+    求解径向动量算符
+    \begin{equation}
+        p_r \coloneq \pp \cdot \frac{\rr}{r}
+    \end{equation}
+    在坐标表象下的表达式。
+
+    \paragraph{解答}
+    这一算符涉及动量与坐标的乘积，是非Hermite的。
+    首先进行Hermite化，定义Hermite的径向动量算符：
+    \begin{equation}
+        \hat{p}_r = \frac12 \left( \frac{\rr}{r}\cdot\pp + \pp\cdot\frac{\rr}{r} \right).
+    \end{equation}
+    这还不够简化，可以通过构造对易子，进一步化简。
+    \begin{equation}
+    \begin{aligned}
+        &\quad\ \frac12 \left( \frac{\rr}{r}\cdot\pp + \pp\cdot\frac{\rr}{r} \right) \\
+        &= \frac12 \left( 2\frac{\rr}{r}\cdot\pp - \frac{\rr}{r}\cdot\pp + \pp\cdot\frac{\rr}{r} \right) \\
+        &= \frac12 \left( 2\frac{\rr}{r}\cdot\pp + \left[\pp, \frac{\rr}{r}\right] \right) \\
+        &= \frac{\rr}{r}\cdot\pp - \frac12\ii\hbar\left(\del\cdot\frac{\rr}{r}\right) \\
+        &= \frac{\rr}{r}\cdot\pp - \frac12\ii\hbar\left(\del\cdot\frac{\rr}{r}\right) \\
+        &= \frac{\rr}{r}\cdot\pp - \ii\hbar\frac{1}{r}.
+    \end{aligned}
+    \end{equation}
+    注意：这里的$\del$并非动量在坐标表象下的表示，而是对坐标算符的求导运算，以上推导与表象无关；
+    $\del\cdot(\rr/r)$的计算步骤如下：
+    \begin{equation}
+    \begin{aligned}
+        &\quad\ \del\cdot\frac{\rr}{r} \\
+        &= \pd_x \frac{x}{\sqrt{x^2+y^2+z^2}} + \pd_y \frac{y}{\sqrt{x^2+y^2+z^2}} + \pd_z \frac{z}{\sqrt{x^2+y^2+z^2}} \\
+        &= \left(\frac{1}{r} - \frac{x^2}{r^3}\right) + \left(\frac{1}{r} - \frac{y^2}{r^3}\right) + \left(\frac{1}{r} - \frac{z^2}{r^3}\right) \\
+        &= \frac{2}{r}.
+    \end{aligned}
+    \end{equation}
+    现在，我们正式将$\pp$换为坐标表象下的表示，得到：
+    \begin{equation}
+        \hat{p}^{(\rr)}_r = -\ii\hbar\pd_r - \ii\hbar\frac{1}{r} = -\ii\hbar\left(\frac{1}{r}+\pd_r\right).
+    \end{equation}
+    \hfill$\square$
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[breakable, title={\textbf{氢原子能级叠加态}}]
+    \paragraph{题目}
+    氢原子在$t=0$时刻处于量子态（$\ket{nlm}$表示量子数$n,l,m$的本征态）
+    \begin{equation}
+        \ket{\psi(0)} = \frac12\ket{210} - \frac{1}{\sqrt{2}}\ket{310} - \frac{1}{\sqrt{2}}\ket{21-1},
+    \end{equation}
+    求$H, l^2, l_z$三个力学量：
+    \begin{enumerate}
+        \item{在$t=0$时刻的测值概率分布及平均值；}
+        \item{任意$t$时刻的测值概率分布及平均值。}
+    \end{enumerate}
+
+    \paragraph{解答}
+
+    注意：这个量子态\emph{尚未归一化}，我们先进行归一化：
+    \begin{equation}
+        \ket{\psi(0)} = \frac{1}{\sqrt{5}}\ket{210} - \sqrt{\frac25}\ket{310} - \sqrt{\frac25}\ket{21-1}.
+    \end{equation}
+
+    首先明确各个力学量的量子数与本征值的关系：
+    \begin{itemize}
+        \item{能量：我们不妨设基态（$n=1$）时的能量为$E_0=-13.6\ \rm{eV}$，则主量子数为$n$的量子态的本征能量为$E_0/n^2$；}
+        \item{角动量平方：角量子数为$l$的本征态对应的角动量平方大小为$l(l+1)\hbar^2$；}
+        \item{角动量$z$分量：磁量子数为$m$的本征态对应的角动量$z$分量为$m\hbar$。}
+    \end{itemize}
+
+    根据统计诠释，测得$n=2$即$E_n=E_0/4$的概率由$\ket{210}$和$\ket{21-1}$贡献：
+    \begin{equation}
+        P_{E_2} = \abs{1/\sqrt{5}}^2 + \abs{-\sqrt{2/5}}^2 = 3/5,
+    \end{equation}
+    测得$n=3$即$E_n=E_0/9$的概率由$\ket{310}$贡献：
+    \begin{equation}
+        P_{E_3} = \abs{-\sqrt{2/5}}^2 = 2/5.
+    \end{equation}
+    能量平均值为
+    \begin{equation}
+        \expval{H} = \frac35 E_2 + \frac25 E_3 = \frac{7}{36} E_0.
+    \end{equation}
+
+    依此可得
+    \begin{equation}
+    \begin{aligned}
+        P_{l=1} &= 1, \\
+        \expval{l^2} &= 2\hbar^2; \\
+        P_{m=0} &= 3/5, \\
+        P_{m=-1} &= 2/5, \\
+        \expval{l_z} &= \frac35 \cdot 0\hbar + \frac25 \cdot -\hbar = -\frac25\hbar.
+    \end{aligned}
+    \end{equation}
+
+    对于含时情况，我们写出对应的时间相位
+    \begin{equation}
+        \ket{\psi(0)} = \left(\frac{1}{\sqrt{5}}\ket{210} - \sqrt{\frac25}\ket{21-1}\right) \ee^{-\ii E_0 t/4\hbar} - \sqrt{\frac25}\ket{310} \ee^{-\ii E_0 t/9\hbar}.
+    \end{equation}
+    在按前一题的方法计算测值概率时，只要将对应的系数乘以相应的量子相位即可。
+    事实上，我们要注意到，在氢原子体系中，$H, l^2, l_z$三个力学量均与Hamiltonian量对易，因此是守恒量，因此无论系统是否处于单个能量本征态，其力学量测值概率分布均不随时间而变。
+    因此$t>0$时刻的测值分布与平均值与$t=0$时完全一样。
+    \hfill $\square$
+
+\end{tcolorbox}
