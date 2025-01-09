@@ -85,56 +85,6 @@
     此外，这两个算符形式相差一个负号，请予注意。
 \end{tcolorbox}
 
-\begin{tcolorbox}[breakable, colframe=blue, colback=blue!10, title={\textbf{含坐标、动量算符的对易子的计算}}]
-
-    对易子有以下几个重要性质（$f,g,h$为算符，$c$为常数）：
-    \begin{itemize}
-        \item{$[f,g]=-[g,f]$\quad（交换取负）}
-        \item{$[cf, g]=[f,cg]=c[f,g]$\quad （常数可提出）}
-        \item{$[f+g, h]=[f,h]+[g,h]$\quad （算符加法分配）}
-        \item{$[fg, h]=f[g,h]+[f,h]g$\quad （算符乘法分配\footnote{可以理解为在等号右侧的两项中：前者，$g$将左侧的$f$“推”至算符外边；后者，$f$将右侧的$g$“推”至算符外边。}）}
-    \end{itemize}
-
-    在计算含坐标、动量算符时注意以下几个可能的技巧：
-    \begin{itemize}
-        \item{含$r^2, p^2$的力学量，考虑拆为$x^2+y^2+z^2$或$p_x^2+p_y^2+p_z^2$。}
-        \item{含点乘的力学量，例如$\frac12(\rr\cdot\pp+\pp\cdot\rr)$，可考虑表为分量相乘形式：$\frac12(x p_x + p_x x + y p_y + p_y y + z p_z + p_z z)$。}
-        \item{对于较为复杂的力学量，例如$1/r, 1/r^2$，考虑使用如下结论：
-            \begin{equation}
-                [\pp,F(\rr,\pp)] = -\ii\hbar\del_{\rr}F(\rr,\pp),\quad [\rr,F(\rr,\pp)] = \ii\hbar\del_{\pp}F(\rr,\pp).
-            \end{equation}
-        }
-        \item{运算结果为矢量的对易子，可以考虑分别证明各个分量。}
-    \end{itemize}
-
-    此外，角动量也是经常出现于习题的力学量。
-    角动量定义为$\bm{l}\coloneq\rr\times\pp$，其分量表示为
-    \begin{equation}
-        l_z = x p_y - y p_x,\quad l_x = y p_z - z p_y,\quad l_y = z p_x - x p_z.
-    \end{equation}
-    引入Levi-Civita符号$\eps_{ijk}$，其满足
-    \begin{equation}
-        \eps_{ijk} =
-        \begin{cases}
-            0,  & (i=j) \vee (j=k) \vee (i=k),\\
-            1,  & \rm{\ for\ even\ permutation\ }(i,j,k),\\
-            -1, & \rm{\ for\ odd\ permutation\ }(i,j,k).
-        \end{cases}
-    \end{equation}
-    可以以之表示角动量与其他力学量的对易关系：
-    \begin{equation}
-        [l_i, q_j] = \eps_{ijk} \ii\hbar q_k, \quad
-        [l_i, p_j] = \eps_{ijk} \ii\hbar p_k, \quad
-        [l_i, l_j] = \eps_{ijk} \ii\hbar l_k.
-    \end{equation}
-    关于角动量，还可证明
-    \begin{equation}
-        \bm{l} \times \bm{l} = \ii\hbar\bm{l},
-    \end{equation}
-    \begin{equation}
-        [l^2, l_i] = 0 \rm{\ for\ } i=x,y,z.
-    \end{equation}
-\end{tcolorbox}
 
 \begin{tcolorbox}[breakable, colframe=purple, colback=red!10, title={\textbf{关于连续力学量的算符}}]
 当我们讨论一个连续力学量时，态矢与算符该如何表示？
@@ -183,7 +133,7 @@
 那么对于连续变量，我们自然也可以写出这一算符的形式，令$g=Qf$，那么：
 \begin{equation}
     \label{eq:cmr_operator_cont}
-    g(q') = Q(q',q) f(q),
+    g(q') = \int \dd q Q(q',q) f(q),
 \end{equation}
 $Q(q',q)$即贡献了从$f(q)$到$g(q')$的线性叠加。
 
@@ -194,7 +144,7 @@ $Q(q',q)$即贡献了从$f(q)$到$g(q')$的线性叠加。
 \end{equation}
 那么我们可以依此写出求导算子的矩阵形式：
 \begin{equation}
-    \partial_q \approx \frac{1}{2\Delta q}
+    \partial_q \sim \frac{1}{2\Delta q}
     \begin{bmatrix}
         0  &  1 \\
         -1 &  0 &  1    \\

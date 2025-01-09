@@ -332,7 +332,7 @@
 \emph{Heisenberg不确定度关系}给出了对于任意量子态$\ket{\psi}$，$\Delta f \cdot \Delta g$的下限：
 \begin{equation}
     \label{eq:principle_uncertainty_relation}
-    \Delta f \cdot \Delta g \geq \frac12 \abs{\braket{\psi}{[f,g]}{\psi}}.
+    \Delta f \cdot \Delta g \geq \frac12 \abs{\mel{\psi}{[f,g]}{\psi}}.
 \end{equation}
 \end{tcolorbox}
 这一关系也被称作“测不准关系”。
@@ -392,19 +392,19 @@ Heisenberg不确定度关系最著名的例子自然是\emph{坐标—动量不�
 \frac{\dd \expval{f}}{\dd t}
 &= \frac{\dd}{\dd t} \mel{\psi}{f}{\psi} \\
 &= \mel{\pd_t \psi}{f}{\psi} + \mel{\psi}{\pd_t f}{\psi} + \mel{\psi}{f}{\pd_t \psi} \\
-&= \mel{\psi}{\left(\frac{H}{\ii\hbar}\right)^\dag f}{\psi} + \expval{\pd_t f} + \mel{\psi}{f \frac{H}{\ii\hbar}}{\psi} \\
-&= \underbrace{-\frac{1}{\ii\hbar}}_{(1/\ii\hbar)^\dag}\mel{\psi}{H f}{\psi} + \expval{\pd_t f} + \frac{1}{\ii\hbar}\mel{\psi}{fH}{\psi} \\
-&= \frac{1}{\ii\hbar}\expval{[f,H]} + \expval{\pd_t f},
+&= \mel{\psi}{\left(\frac{H}{\ii\hbar}\right)^\dag f}{\psi} + \expval{\dot{f}} + \mel{\psi}{f \frac{H}{\ii\hbar}}{\psi} \\
+&= \underbrace{-\frac{1}{\ii\hbar}}_{(1/\ii\hbar)^\dag}\mel{\psi}{H f}{\psi} + \expval{\dot{f}} + \frac{1}{\ii\hbar}\mel{\psi}{fH}{\psi} \\
+&= \frac{1}{\ii\hbar}\expval{[f,H]} + \expval{\dot{f}},
 \end{aligned}
 \end{equation}
 \begin{tcolorbox}
 于是我们就得到了\emph{Heisenberg方程}:
 \begin{equation}
-    \frac{\dd \expval{f}}{\dd t} = \frac{1}{\ii\hbar}\expval{[f,H]} + \expval{\pd_t f},
+    \frac{\dd \expval{f}}{\dd t} = \frac{1}{\ii\hbar}\expval{[f,H]} + \expval{\dot{f}},
 \end{equation}
 其描述了\emph{力学量的时间演化规律}。
 \end{tcolorbox}
 
-通过Heisenberg方程我们发现，对于不显含时间的力学量$f$，若其与Hamiltonian量对易，那么就有$\dd \expval{f}\dd t = 0$。
+通过Heisenberg方程我们发现，对于不显含时间的力学量$f$（$\dot{f}=0$），若其与Hamiltonian量对易，那么就有$\dd \expval{f}/\dd t = 0$。
 这是说，\emph{与Hamiltonian量对易，且不含时的力学量的测值概率分布与平均值均不随时间改变，即为守恒量}
 \footnote{注意：对于非定态，守恒力学量的测值概率分布与平均值均不随时间改变。}。

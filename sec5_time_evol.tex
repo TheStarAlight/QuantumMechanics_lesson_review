@@ -1,0 +1,127 @@
+\section{时间演化}
+\label{sec:time_evol}
+
+在\ref{subsec:principles_time_evolution}节中，我们已经讨论了一个量子系统随时间演化的规律，
+其中Schrödinger方程描述了量子态随时间的变化规律，而Heisenberg方程则描述了力学量（平均值）的演化规律。
+事实上，量子态是无法直接观测的，我们所能直接观察的物理实在也仅仅是系统的可观测力学量。
+从这个角度来说，Heisenberg方程显得更加自然并具有基础性。
+
+% =================================================
+\subsection{时间演化算符}
+
+我们假定一个量子系统在零时刻与$t$时刻的量子态分别为$\ket{\psi(0)}$和$\ket{\psi(t)}$。
+根据Schrödinger方程
+\begin{equation}
+    \ii\hbar\pd_t\ket{\psi} = H\ket{\psi},
+\end{equation}
+我们可以得到Schrödinger方程的一个形式解：
+\begin{equation}
+    \ket{\psi(t)} = \exp\left(-\ii \int_0^t H \dd\tau /\hbar\right)\ket{\psi(0)},
+\end{equation}
+若$H$不含时，则为
+\begin{equation}
+    \ket{\psi(t)} = \exp(-\ii H t/\hbar)\ket{\psi(0)}.
+\end{equation}
+
+我们看到，这个特殊的算符
+\begin{equation}
+    U(t,0) := \exp\left(-\ii \int_0^t H \dd\tau /\hbar\right)
+\end{equation}
+将两个时刻的量子态联系起来，称为\emph{时间演化算符（time-evolution operator）}。
+根据我们的物理直觉，这个算符显然具有\emph{幺正性（unitary）}，即其是保留内积的变换，这是说
+\begin{equation}
+    \innerproduct{\psi(t)}{\psi(t)} = \mel{\psi(0)}{U^\dag U}{\psi(0)} = \mel{\psi(t)}{I}{\psi(0)} = \innerproduct{\psi(0)}{\psi(0)}.
+\end{equation}
+时间演化算符在形式上非常简单，然而在非对角的表象中，依然很难求出具体的形式。
+\footnote{初学者可能对``算符的指数''存在误会。形式上，算符的指数可以直接按照指数函数的定义来理解，即$\exp A := \sum_{n=0}^\infty A^n/n!$。
+    初学者可能认为``算符的指数的矩阵元''应该等于``原算符对应矩阵元的指数''，即$\{\exp A\}_{ij} = \exp(A_{ij})$，
+    然而这是一种错误的观点（仅对``对角''算符成立），因为算符的指数是一个整体，它对整个算符进行指数运算，而不是对算符的每个元素分别进行指数运算。
+}
+
+在量子力学中，可观测力学量$F$的期望值是我们仅能直接观察的物理实在：
+\begin{equation}
+    \expval{F} = \mel{\psi(0)}{U^\dag F U}{\psi(0)},
+\end{equation}
+这个式子有两种不同的理解方式：
+\begin{itemize}
+    \item 第一种理解是认定力学量算符$F$保持不变，而量子态$\ket{\psi(t)}=U\ket{\psi(0)}$随时间演化，这就是说：
+        \begin{equation}
+            \expval{F} = \underbrace{\bra{\psi(0)}U^\dag}_{\bra{\psi(t)}} F \underbrace{U\ket{\psi(0)}}_{\ket{\psi(t)}},
+        \end{equation}
+        这种表述方式称为Schrödinger绘景（picture）。
+    \item 第二种理解是认为力学量算符$F(t)=U^\dag F(0) U$随时间流易而演化，而量子态$\ket{\psi}$保持不变：
+        \begin{equation}
+            \expval{F} = \mel{\psi}{\underbrace{U^\dag F(0) U}_{F(t)}}{\psi}
+        \end{equation}
+        这种表述方式称为Heisenberg绘景。
+\end{itemize}
+两种绘景殊途同归，是完全等价的，在不同的问题中可以选择更适合的绘景进行分析。
+
+
+% =================================================
+\subsection{Virial定理}
+
+我们研究一个位于势场$V(\rr)$中的粒子，其Hamiltonian：
+\begin{equation}
+    H = \frac{\pp^2}{2m} + V(\rr).
+\end{equation}
+对于定态，考察$\rr\cdot\pp$的期望值随时间的演化：
+\begin{equation}
+\begin{aligned}
+    \frac{\dd}{\dd t}\expval{\rr\cdot\pp}
+    &= \frac{1}{\ii\hbar} \expval{[\rr\cdot\pp, H]} \\
+    &= \frac{1}{\ii\hbar} \expval{\rr\cdot[\pp,H] + [\rr,H]\cdot\pp}\\
+    &= \frac{1}{\ii\hbar} \expval{-\ii\hbar\rr\cdot\nabla V(\rr) + \ii\hbar\pp^2/m} \\
+    &= -\expval{\rr\cdot\nabla V(\rr)} + 2\expval{T},
+\end{aligned}
+\end{equation}
+其中$T=\pp^2/2m$是动能。
+对于定态，$\rr\cdot\pp$的期望值是一个常数，因此其时间导数为零，于是有
+\begin{equation}
+    2\expval{T} = \expval{\rr\cdot\nabla V(\rr)}.
+\end{equation}
+这就是\emph{Virial定理}。
+
+这一定理对于特殊的势能函数具有特别的意义。
+例如，对于$n$次齐次势能函数，有$\rr\cdot\nabla V(\rr) = nV(\rr)$，那么就有
+\begin{equation}
+    2\expval{T} = nV(\rr).
+\end{equation}
+
+
+% =================================================
+\subsection{Ehrenfest定理}
+
+对于一个量子波包，我们好奇的是，其坐标与动量随时间的变化率是否有与经典力学类似的形式？
+我们设Hamiltonian为$H=\pp^2/2m + V(\rr)$，可以写出
+\begin{equation}
+\begin{aligned}
+    \frac{\dd}{\dd t}\rr &= \frac{1}{\ii\hbar} \expval{[\rr, H]} = \frac{\expval{\pp}}{m}, \\
+    \frac{\dd}{\dd t}\pp &= \frac{1}{\ii\hbar} \expval{[\pp, H]} = \expval{-\nabla V(\rr)} = \expval{\bm{F}(\rr)},
+\end{aligned}
+\end{equation}
+可见这与经典力学Newton方程的形式非常相似，这就是\emph{Ehrenfest定理}，其表明，量子波包的坐标与动量期望值的时间演化遵循类似经典力学的规律。
+
+
+% =================================================
+\subsection{Feynman-Hellmann定理}
+
+Feynman-Hellmann定理指出，对于一个含参$\lambda$的Hamiltonian $H(\lambda)$，设$E_n$为其本征态$\ket{\psi_n}$的本征能量，则有
+\begin{equation}
+    \frac{\pd E_n}{\pd \lambda} = \mel{\psi_n}{\frac{\pd H}{\pd \lambda}}{\psi_n}.
+\end{equation}
+
+证明如下：
+$E_n$为$H$的本征态$\ket{\psi_n}$的本征能量，因此有
+\begin{equation}
+    H\ket{\psi_n} = E_n \ket{\psi_n}.
+\end{equation}
+移项并对$\lambda$求导，得
+\begin{equation}
+    \left( \pd_\lambda H - \pd_\lambda E_n \right) \ket{\psi_n} + (H-E_n) \pd_\lambda \ket{\psi_n} = 0.
+\end{equation}
+左乘$\bra{\psi_n}$，并注意到$(H-E_n)\ket{\psi_n}=0$：
+\begin{equation}
+    \mel{\psi_n}{\pd_\lambda H - \pd_\lambda E_n}{\psi_n} + \underbrace{\bra{\psi_n} (H-E_n)}_{0} \pd_\lambda \ket{\psi_n} = 0.
+\end{equation}
+移项即得F-H定理，证毕。

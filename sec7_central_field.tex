@@ -71,9 +71,58 @@
 我们看到，三维各向同性球谐振子场具有比一般中心力场更高的简并度，这与其径向势场有关，更高的“对称性”导致了更多的简并态。
 
 % =================================================
-\subsection{氢原子（暂时搁置）}
+\subsection{氢原子}
 \label{subsec:cf_hydrogen}
 
-% 氢原子中有一个质子和电子，故其实际上是一个两体问题。
-% 可以通过引入质心坐标和相对坐标的方法，将两体问题化为单体问题。
-% 这样，仍然可以沿用之前的中心力场的处理方法，但质量需理解为约化质量，能量理解为相对运动能量。
+氢原子中有一个质子和电子，故其实际上是一个两体问题。
+可以通过引入质心坐标和相对坐标的方法，将两体问题化为单体问题。
+这样，仍然可以沿用之前的中心力场的处理方法，但质量需理解为约化质量，能量理解为相对运动能量。
+
+在自然单位制$\hbar=m_e=\abs{e}=1$下，Coulomb势场的能量为
+\begin{equation}
+    V(r) = -\frac{1}{r}.
+\end{equation}
+
+由径向方程的边界条件，给出径向量子数$n_r=0,1,2,\cdots$，本征能量为
+\begin{equation}
+    E_n = -\frac{1}{2(n_r+l_1)^2},
+\end{equation}
+取主量子数$n:=n_r+l_1+1,\ n=1,2,\cdots$，可得
+\begin{equation}
+    E_n = -\frac{1}{2n^2}.
+\end{equation}
+
+能量的自然单位为$me^4/\hbar^2 = 1\ \rm{Hartree} \approx 27.211\ \rm{eV}$，
+长度的自然单位是$a_0 = \hbar^2/me^2 \approx 0.529\ \rm{Å}$，为一个Bohr半径。
+如此，本征能量表为
+\begin{equation}
+    E_n = -\frac{e^2}{a_0}\frac{1}{2n^2},
+\end{equation}
+其中基态的能量为$E_1 = -\frac{e^2}{a_0} \approx -13.6\ \rm{eV}$。
+
+我们用$(n,l,m)$来区分氢原子的各个量子态。
+\begin{itemize}
+    \item 角动量平方的期望值$\expval{\LL^2}=l(l+1)\hbar^2$；
+    \item 角动量$z$分量的期望值$\expval{L_z}=m\hbar$。
+\end{itemize}
+
+特别地，我们写出基态的波函数：
+\begin{equation}
+    \psi_{100}(r) = \frac{1}{\sqrt{\pi a_0^3}}\ee^{-r/a_0}.
+\end{equation}
+读者应牢记。
+
+最后还有一个计算技巧。
+在计算$r^n$的期望值时，可以采用如下的策略：
+\begin{equation}
+\begin{aligned}
+    \expval{r^n}
+    &= \frac{\int r^2 \dd r \dd\Omega \ Y_{lm}^*(\theta,\phi) r^n Y_{lm}(\theta,\phi) R_{nl}^2(r)}{\int r^2 \dd r \dd\Omega \ Y_{lm}^*(\theta,\phi) Y_{lm}(\theta,\phi) R_{nl}^2(r)} \\
+    &= \frac{\int\dd r \ r^{n+2} R_{nl}^2(r)}{\int\dd r \ r^2 R_{nl}^2(r)},
+\end{aligned}
+\end{equation}
+其中$R_{nl}(r)$是多项式$P(r)$与$\ee^{-r/na_0}$的乘积，因此问题最后可以归结为求解一个重要积分：
+\begin{equation}
+    \int_0^\infty \dd t \ t^{N} \ee^{-t} = \Gamma(N+1) = N!,
+\end{equation}
+这一公式需牢记。

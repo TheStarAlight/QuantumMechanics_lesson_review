@@ -1,4 +1,3 @@
-
 \section{一维问题}
 \label{sec:one_dim}
 
@@ -88,7 +87,16 @@ $\psi_{2,k}(x)$对于任意$k$始终无法满足$\psi(0)=0$，故舍去该组解
     \psi_{E_n} = \sqrt{\frac2a} \sin\frac{n\pi x}{a} ,\quad E_n = \frac{n^2 \pi^2 \hbar^2}{2m a^2}, \quad n=1,2,\cdots.
 \end{equation}
 
+注意：记忆能级不靠背诵，利用$p=\hbar k$，$k_n=n\pi/a$及$E=p^2/2m$即可定出能级。
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/sec3_figures/infinite_well_eigenstates.pdf}
+    \caption{无限深方势阱的能量本征态。}
+\end{figure}
+
 若已知系统零时刻处于几个能量本征态的叠加态，要求解系统波函数随时间的演化，将零时刻波函数投影至这些能量本征波函数之后，分别乘以相应的时间相位$\exp(-\ii E t/\hbar)$，重新相加即可。
+一个运算技巧是先不要急于代入能量的表达式，而是先表为$E_n=n^2 E_1$，在化简完毕后再代入$E_1$的表达式。
 
 若要求解系统的力学量平均值，直接使用相应算符在坐标表象下的表式求解即可，例如，坐标平均值
 \begin{equation}
@@ -102,6 +110,26 @@ $\psi_{2,k}(x)$对于任意$k$始终无法满足$\psi(0)=0$，故舍去该组解
 \begin{equation}
     \expval{p^2} = \mel{\psi}{p^2}{\psi} = \int_0^a \psi^*(x) \cdot -\hbar^2\pd_{xx}^2 \psi(x).
 \end{equation}
+注意，不少情况下，利用波函数的对称性及不同能级波函数的正交性可简化计算。
+
+在计算的时候，也应熟记一些与三角函数有关的推论，例如二倍角与积化和差公式：
+\begin{itemize}
+    \item 二倍角公式
+    \begin{equation}
+    \begin{aligned}
+        \sin 2\alpha &= 2\sin\alpha\cos\alpha, \\
+        \cos 2\alpha &= \cos^2\alpha - \sin^2\alpha = 2\cos^2\alpha - 1 = 1 - 2\sin^2\alpha.
+    \end{aligned}
+    \end{equation}
+    \item 积化和差公式
+    \begin{equation}
+    \begin{aligned}
+        2\cos\alpha\cos\beta &= \cos(\alpha-\beta) + \cos(\alpha+\beta), \\
+        2\sin\alpha\sin\beta &= \cos(\alpha-\beta) - \cos(\alpha+\beta), \\
+        2\sin\alpha\cos\beta &= \sin(\alpha+\beta) + \sin(\alpha-\beta).
+    \end{aligned}
+    \end{equation}
+\end{itemize}
 
 
 % =================================================
@@ -155,6 +183,12 @@ $\psi_{2,k}(x)$对于任意$k$始终无法满足$\psi(0)=0$，故舍去该组解
     E_0 = \frac12 \hbar\omega.
 \end{equation}
 \end{tcolorbox}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/sec3_figures/harmonic_oscillator_eigenstates.pdf}
+    \caption{一维谐振子的能量本征态。}
+\end{figure}
 
 
 % ================================

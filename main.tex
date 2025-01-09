@@ -16,8 +16,11 @@
 \usepackage{tcolorbox}  % colored textbox environment
 \tcbuselibrary{breakable}   % tcolorbox setup
 \usepackage[angle=0, scale=0.5]{draftwatermark}
-\SetWatermarkText{\includegraphics{TheStarAlight_logo.png}}
+\SetWatermarkText{\includegraphics{figures/TheStarAlight_logo.png}}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=magenta} % hyperref setup
+\usepackage{caption}
+\captionsetup{font+=it}     % italic (kaiti for Chinese) for captions
+\renewcommand*{\thefootnote}{「\arabic{footnote}」} % change footnote style (「1」)
 % shortcuts
     % color
     \newcommand{\cyan}[1]{\textcolor{cyan}{#1}}
@@ -37,11 +40,18 @@
     % frequently-used notations
     \newcommand{\rr}{\bm{r}}
     \newcommand{\pp}{\bm{p}}
+    \newcommand{\LL}{\bm{L}}
+    \renewcommand{\AA}{\bm{A}}
     \renewcommand{\dag}{\dagger}    % dagger symbol
     \newcommand{\diag}{\rm{diag}\ } % diagonal matrix notation
     \newcommand{\eps}{\varepsilon}
     \newcommand{\up}{\uparrow}
     \newcommand{\down}{\downarrow}
+    % colors
+    \newcommand{\blue}[1]{\textcolor{blue}{#1}}
+    \newcommand{\red}[1]{\textcolor{red}{#1}}
+    \newcommand{\green}[1]{\textcolor{green}{#1}}
+    \newcommand{\purple}[1]{\textcolor{purple}{#1}}
     % others
     \catcode`\。=\active % replace 。with ．
     \newcommand{。}{\ifmmode\text{．}\else ．\fi} % replace 。with ．
@@ -54,7 +64,7 @@
 \author{\Large \textsc{Mingyu Zhu}}
 \date{
     \today \\
-    \normalsize \textit{Edition 0.1 Build 9}
+    \normalsize \textit{Edition 0.3}
 }
 
 \setcounter{page}{0}
@@ -69,11 +79,15 @@
 \pagebreak
 \input{sec2_coord_moment_rep.tex}
 \pagebreak
-\input{sec3_one_dim.tex}
+\input{sec3_commutator.tex}
 \pagebreak
-\input{sec4_identical_particles.tex}
+\input{sec4_one_dim.tex}
 \pagebreak
-\input{sec5_central_field.tex}
+\input{sec5_time_evol.tex}
+\pagebreak
+\input{sec6_identical_particles.tex}
+\pagebreak
+\input{sec7_central_field.tex}
 \pagebreak
 \appendix
 \input{appendix_exercises.tex}

@@ -1,0 +1,154 @@
+
+\section{算符对易关系}
+\label{sec:commutator}
+
+在实际应试中，计算算符对易子$[A,B]=AB-BA$是一项十分重要的能力，
+一些重要的结论亦需通过计算算符对易关系来证明。
+本章我们将讨论计算算符对易子的思路与技巧。
+
+% =================================================
+\subsection{常用规则}
+\label{subsec:commutator_rules}
+
+计算对易子有几个常用的规则：
+\begin{itemize}
+    \item 交换取负：$[A,B] = -[B,A]$；
+    \item ``加法分配律''：$[\alpha A+\beta B,C] = [\alpha A,C]+[\beta B,C]$；
+    \item ``乘法分配律''（前推前，后推后）：
+    \begin{equation}
+        [A, \blue{B}\red{C}] = [A,\blue{B}] \red{C} + \blue{B}[A,\red{C}].
+    \end{equation}
+\end{itemize}
+
+我们还常遇到一些矢量算符。
+
+若对易子本身为矢量，可以考虑将其分解为各个方向的分量。
+例如，要证$\LL\times\pp+\pp\times\LL = 2\ii\hbar\pp$，分别证明其三个分量成立即可，
+以$x$方向为例：$(\LL\times\pp+\pp\times\LL)_x = [p_y,L_z]+[L_y,p_z] = 2\ii\hbar p_x$。
+
+若对易子中的算符是两个矢量的内积或外积，``乘法分配律''也是适用的：
+\begin{equation}
+    \begin{aligned}
+        \relax
+        [A, \blue{\bm{B}}\cdot\red{\bm{C}}] &= [A,\blue{\bm{B}}]\cdot\red{\bm{C}} + \blue{\bm{B}}\cdot[A,\red{\bm{C}}], \\
+        [A, \blue{\bm{B}}\times\red{\bm{C}}] &= [A,\blue{\bm{B}}]\times\red{\bm{C}} + \blue{\bm{B}}\times[A,\red{\bm{C}}].
+\end{aligned}
+\end{equation}
+内积也可以考虑拆为分量形式，例如：$\rr^2=x^2+y^2+z^2$。
+
+对于外积，敬请牢记定义式：
+\begin{equation}
+    \bm{\blue{A}}\times\bm{\red{B}} =
+    \begin{vmatrix}
+        \hat{\bm{x}} & \hat{\bm{y}} & \hat{\bm{z}} \\
+        \blue{A_x} & \blue{A_y} & \blue{A_z} \\
+        \red{B_x} & \red{B_y} & \red{B_z}
+    \end{vmatrix}
+    = \hat{\bm{x}}\begin{vmatrix}\blue{A_y} & \blue{A_z} \\ \red{B_y} & \red{B_z}\end{vmatrix}
+     -\hat{\bm{y}}\begin{vmatrix}\blue{A_x} & \blue{A_z} \\ \red{B_x} & \red{B_z}\end{vmatrix}
+     +\hat{\bm{z}}\begin{vmatrix}\blue{A_x} & \blue{A_y} \\ \red{B_x} & \red{B_y}\end{vmatrix}.
+\end{equation}
+
+
+% =================================================
+\subsection{坐标、动量与角动量的对易子}
+\label{subsec:commutator_rpL}
+
+计算坐标、动量与角动量的对易子，从最基本的坐标—动量对易关系
+\begin{equation}
+    [x, p] = i \hbar
+\end{equation}
+开始，并结合\ref{subsec:commutator_rules}节所述的对易子计算规则，即可得解。
+
+当我们涉及的坐标与动量为三维时，需要注意的是，不同维度的坐标、动量之间彼此无条件对易，因此：
+\begin{equation}
+    [r_i, p_j] = i \hbar \delta_{ij}.
+\end{equation}
+
+当对易子涉及角动量时，问题变得更加复杂。
+首先，请牢记角动量的定义及其分量表达式：
+\begin{equation}
+    \LL = \rr\times\pp =
+    \begin{vmatrix}
+        \hat{\bm{x}} & \hat{\bm{y}} & \hat{\bm{z}} \\
+        x & y & z \\
+        p_x & p_y & p_z \\
+    \end{vmatrix}
+    = \underbrace{(y p_z - z p_y)}_{L_x} \hat{\bm{x}} + \underbrace{(z p_x - x p_z)}_{L_y} \hat{\bm{y}} + \underbrace{(x p_y - y p_x)}_{L_z} \hat{\bm{z}}.
+\end{equation}
+
+接下来是三个角动量与坐标、动量与角动量算符分量对易子的常用二级结论：
+\begin{equation}
+    \begin{aligned}
+        \relax
+        [L_i, r_j] &= \ii\hbar\epsilon_{ijk} r_k, \\
+        [L_i, p_j] &= \ii\hbar\epsilon_{ijk} p_k, \\
+        [L_i, L_j] &= \ii\hbar\epsilon_{ijk} L_k,
+    \end{aligned}
+\end{equation}
+这里$\epsilon_{ijk}$是Levi-Civita符号，仅在$i\ne j\ne k$时不为零，在$ijk$为偶排列时为$1$，奇排列时为$-1$
+\footnote{判断是否为偶排列，可以通过判断需要对调几次元素才能回到正序排列$123$，对调次数为奇数就是奇排列，对调次数为偶数就是偶排列，这是利用了对调一次元素将改变排列的奇偶性的性质。}。
+
+还有两个比较重要的二级结论：
+\begin{equation}
+    \LL\times\LL = \ii\hbar\LL,
+\end{equation}
+\begin{equation}
+    [\LL^2, L_i] = 0.
+\end{equation}
+
+
+% =================================================
+\subsection{``幂次''公式}
+
+有时对易子$[A,B]$中的算符并不能简单地表为$A$和$B$的乘幂，例如，\ref{subsec:commutator_rpL}节中所述结论面对形如$1/r$的算符束手无策。
+而``幂次''公式及其推论则提供了一种手段来处理这种情况。
+
+我们设$[A, B] = C$，且$C$与$A$与$B$均对易。
+易证
+\begin{equation}
+\begin{aligned}
+    \relax
+    [A,B^n]
+    &= [A,\blue{B}\cdot \red{B^{n-1}}] \\
+    &= \blue{B} [A, \red{B^{n-1}}] + \underbrace{[A, \blue{B}]}_C \red{B^{n-1}} \\
+    &= B^2 [A, B^{n-2}] + 2C B^{n-1} \\
+    &= \cdots \\
+    &= n C B^{n-1}.
+\end{aligned}
+\end{equation}
+
+这一公式可以进一步推广至$[A,f(B)]$的情形。
+我们假定$f(B)$是解析函数，于是
+\begin{equation}
+\begin{aligned}
+    \relax
+    [A,f(B)]
+    &= \left[A, \sum_n \frac{f_n}{n!} B^n\right] \\
+    &= \sum_n \frac{f_n}{n!} [A, B^n] \\
+    &= C \sum_n \frac{f_n}{(n-1)!} B^{n-1} \\
+    &= C \frac{\pd f(B)}{\pd B}.
+\end{aligned}
+\end{equation}
+
+对于$A,B$是坐标与动量（的函数）这一特殊情形，有
+\begin{equation}
+\begin{aligned}
+    \relax
+    [\rr, f(\rr,\pp)] = \ii\hbar\nabla_{\pp} f(\rr,\pp), \\
+    [\pp, f(\rr,\pp)] = -\ii\hbar\nabla_{\rr} f(\rr,\pp).
+\end{aligned}
+\end{equation}
+取一例：
+\begin{equation}
+    [\pp, \frac{1}{r}] = [p_x \hat{\bm{x}} + p_y \hat{\bm{y}} + p_z \hat{\bm{z}}, \frac{1}{r}] = -\ii\hbar \nabla \frac{1}{r} = \ii\hbar \frac{\hat{\bm{r}}}{r^2}.
+\end{equation}
+这里的$\nabla_{\rr}, \nabla_{\pp}$应当理解为\emph{``对算符求导数''}。
+虽然看起来与$\rr,\pp$算符在彼此的表象中的形式
+\begin{equation}
+    \hat{\rr}^{(\pp)}\equiv\ii\hbar\nabla_{\pp},
+    \quad \hat{\pp}^{(\rr)}\equiv-\ii\hbar\nabla_{\rr}
+\end{equation}
+完全一样，但本质完全不同。
+请牢记：\emph{对易子的计算无关表象！}
+因此，在计算对易子时，请勿直接将任何算符替换为其在另一个表象中的形式。
