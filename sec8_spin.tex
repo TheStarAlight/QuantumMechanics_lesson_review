@@ -1,0 +1,142 @@
+\section{自旋}
+\label{sec:spin}
+
+% % =================================================
+% \subsection{自旋-1/2体系的Pauli表象}
+% \label{subsec:spin_single_particle}
+
+电子除了空间上的三个自由度，还有一个内禀（intrinsic）属性——\emph{自旋（spin）}，用$\bm{s}$表示。
+根据Stern-Gerlach实验，电子的自旋投影具有二值性，即只能取$s_z=+\hbar/2$或$s_z=-\hbar/2$。
+
+自旋具有角动量的特征，因此我们假定其具备与角动量类似的量子性质，其对易关系满足：
+\begin{equation}
+    [s_i,s_j]=\ii\hbar\epsilon_{ijk}s_k.
+\end{equation}
+再引入无量纲自旋Pauli算符
+\begin{equation}
+    \bm{\sigma}=\bm{s}/\frac{\hbar}{2},
+\end{equation}
+对易关系成为：
+\begin{equation}
+    [\sigma_i,\sigma_j]=2\ii\epsilon_{ijk}\sigma_k.
+\end{equation}
+其还满足
+\begin{equation}
+    \sigma_i^2 = 1, \quad
+    \sigma_i\sigma_j = \ii \epsilon_{ijk}\sigma_k \quad (i\ne j).
+\end{equation}
+
+Pauli表象选取$s_z=\pm\hbar/2$（即$\ket{\up},\ket{\down}$）的本征态作为描述系统状态的基矢。
+在这一表象下，Pauli算符的各个分量为：
+\begin{equation}
+    \sigma_z = \begin{pmatrix}1& 0\\0&-1\end{pmatrix}, \quad
+    \sigma_x = \begin{pmatrix}0& 1\\1& 0\end{pmatrix}, \quad
+    \sigma_y = \begin{pmatrix}0&-\ii\\ \ii& 0\end{pmatrix}.
+\end{equation}
+
+\begin{tcolorbox}[breakable, title={\textbf{例题}}]
+    \paragraph{题目} \textit{（2019年考研·六）}
+    电子处于沿$z$轴方向，磁感应强度为$B_0 \cos\omega t$的时变磁场中。零时刻测得其自旋$x$分量为$+\hbar/2$。
+    求$t$时刻的量子态。
+
+    \paragraph{解答}
+    我们在Pauli表象下研究这个问题。
+
+    首先求出零时刻量子态在Pauli表象下的表示$\chi_0^{(s_z)}$，其为$\sigma_x$的本征值为$+1$的本征态。
+    $\sigma_x$的矩阵形式为
+    \begin{equation}
+        \sigma_x^{(s_z)} = \begin{pmatrix} & 1 \\ 1 & \end{pmatrix},
+    \end{equation}
+    于是得到零时刻量子态
+    \begin{equation}
+        \chi_0^{(s_z)} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ 1 \end{pmatrix}.
+    \end{equation}
+
+    接下来，我们写出Hamiltonian：
+    \begin{equation}
+        H = -\mu_{\rm{B}} B(t) \sigma_z = - \underbrace{\frac{e\hbar}{2m_e} B_0}_{E_0} \cos\omega t \sigma_z,
+    \end{equation}
+    其中$\mu_{\rm{B}}$是Bohr磁子。
+
+    量子态的演化满足Schrödinger方程，我们设$\chi^{(s_z)}(t)=[\chi_a(t), \chi_b(t)]^T$，那么有
+    \begin{equation}
+        \ii\hbar\pd_t \begin{pmatrix}\chi_a \\ \chi_b \end{pmatrix}
+        = H \begin{pmatrix} \chi_a \\ \chi_b \end{pmatrix}
+        = \begin{pmatrix} -E_0 \cos\omega t \chi_a \\ E_0 \cos\omega t \chi_b \end{pmatrix},
+    \end{equation}
+    于是得到两个分离的常微分方程
+    \begin{equation}
+        \ii\hbar\pd_t \chi_a = -E_0 \cos\omega t \chi_a,\quad
+        \ii\hbar\pd_t \chi_b =  E_0 \cos\omega t \chi_b,
+    \end{equation}
+    解之，并用初条件$\chi_a(0)=1/\sqrt2,\ \chi_b(0)=1/\sqrt2$定解，就得到$t$时刻的量子态
+    \begin{equation}
+        \chi_a(t) = \frac{1}{\sqrt{2}} \ee^{\ii\frac{E_0}{\hbar\omega}\sin\omega t},\quad
+        \chi_b(t) = \frac{1}{\sqrt{2}} \ee^{-\ii\frac{E_0}{\hbar\omega}\sin\omega t}.
+    \end{equation}
+    \hfill$\square$
+\end{tcolorbox}
+
+在Hamiltonian不含时的情形中，若Hamiltonian能表为$\bm{\sigma}$的分量的线性组合（例如：$H=E_0\sigma_i$），可利用结论
+\begin{equation}
+    \label{eq:spin_exp_pauli}
+    \ee^{\ii \bm{\alpha}\cdot\bm{\sigma}} = \cos\alpha + \ii \sin\alpha (\hat{\bm{\alpha}}\cdot\bm{\sigma}),
+\end{equation}
+而无需变换至$\sigma_i$表象。
+该结论可利用$\ee^{\ii \bm{\alpha}\cdot\bm{\sigma}}$的Taylor展开式证明：
+\begin{equation}
+\begin{aligned}
+    \ee^{\ii \bm{\alpha}\cdot\bm{\sigma}}
+    &= \sum_{n=0}^\infty \frac{(\ii \bm{\alpha}\cdot\bm{\sigma})^n}{n!}\\
+    &= \sum_{n=0}^\infty \frac{(-1)^n (\bm{\alpha}\cdot\bm{\sigma})^{2n}}{(2n)!} + \ii \sum_{n=0}^\infty \frac{(-1)^n (\bm{\alpha}\cdot\bm{\sigma})^{2n+1}}{(2n+1)!}\\
+    &= \sum_{n=0}^\infty \frac{(-1)^n \alpha^{2n}}{(2n)!} + \ii (\hat{\alpha}\cdot\sigma) \sum_{n=0}^\infty \frac{(-1)^n \alpha^{2n+1}}{(2n+1)!}\\
+    &= \cos\alpha + \ii \sin\alpha (\hat{\alpha}\cdot\bm{\sigma}).
+\end{aligned}
+\end{equation}
+
+\begin{tcolorbox}[breakable, title={\textbf{例题}}]
+    \paragraph{题目} \textit{（2023年考研·五）}
+    电子处于沿$x$轴方向，磁感应强度为$B_0$的静磁场中。零时刻测得其自旋$z$分量为$+\hbar/2$。
+    求：\\
+    (1) $t$时刻的量子态；\\
+    (2) $t$时刻电子自旋各个分量的期望值。
+
+    \paragraph{解答}
+    Hamiltonian为
+    \begin{equation}
+        H = -\mu_{\rm{B}} B_0 \sigma_x = - \underbrace{\frac{e\hbar}{2m_e} B_0}_{E_0} \sigma_x,
+    \end{equation}
+    则$0\rightarrow t$的时间演化算符为
+    \begin{equation}
+        U(t,0) = \ee^{-\ii H t/\hbar} = \ee^{\ii E_0 \sigma_x t/\hbar},
+    \end{equation}
+    $t$时刻与零时刻的量子态通过时间演化算符相联系：
+    \begin{equation}
+        \ket{\psi(t)} = U(t,0) \ket{\psi(0)} = \ee^{\ii E_0 \sigma_x t/\hbar} \ket{\psi_0}
+        = \cos(E_0 t/\hbar)\ket{\psi_0} + \sin(E_0 t/\hbar) \sigma_x \ket{\psi_0}.
+    \end{equation}
+
+    现在，我们在Pauli表象下写出$\ket{\psi(0)}$和$\ket{\psi(t)}$的具体表式。
+    零时刻态为$s_z=\hbar/2$的本征态：
+    \begin{equation}
+        \psi^{(s_z)}(0) = \begin{pmatrix} 1 \\ 0 \end{pmatrix},
+    \end{equation}
+    代入上式，我们得到$t$时刻态的表示为
+    \begin{equation}
+        \psi^{(s_z)}(t) = \cos(E_0 t/\hbar)\begin{pmatrix} 1 \\ 0 \end{pmatrix} + \sin(E_0 t/\hbar) \underbrace{\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}}_{\sigma_x} \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+        = \begin{pmatrix} \cos(E_0 t/\hbar) \\ \sin(E_0 t/\hbar) \end{pmatrix}.
+    \end{equation}
+
+    自旋各分量的期望值为：
+    \begin{equation}
+    \begin{aligned}
+        \expval{s_z}(t) &= \mel{\psi(t)}{s_z}{\psi(t)} \\
+        &= \frac{\hbar}{2} \begin{pmatrix} \cos(E_0 t/\hbar) & \sin(E_0 t/\hbar) \end{pmatrix} \begin{pmatrix} 1 & \\ & -1 \end{pmatrix} \begin{pmatrix} \cos(E_0 t/\hbar) \\ \sin(E_0 t/\hbar) \end{pmatrix} \\
+        &= \frac{\hbar}{2} \left(\cos^2(E_0 t/\hbar) - \sin^2(E_0 t/\hbar)\right)
+        = \frac{\hbar}{2} \cos(2E_0 t/\hbar); \\
+        \expval{s_x}(t) &= \mel{\psi(t)}{s_x}{\psi(t)} = \frac{\hbar}{2} \sin(2E_0 t/\hbar); \\
+        \expval{s_y}(t) &= \mel{\psi(t)}{s_y}{\psi(t)} = 0.
+    \end{aligned}
+    \end{equation}
+    \hfill $\square$
+\end{tcolorbox}

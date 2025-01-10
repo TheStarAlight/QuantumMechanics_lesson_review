@@ -1,0 +1,166 @@
+\section{角动量}
+\label{sec:angular_momentum}
+
+% % =================================================
+% \subsection{角动量算符}
+% \label{subsec:angular_momentum_ops}
+
+在这一节中，我们将讨论量子力学中的角动量算符以及描述角动量表象的代数方法。
+
+我们从最基本的角动量算符对易关系开始：
+\begin{equation}
+    [L_i, L_j] = \ii\hbar\epsilon_{ijk}L_k.
+\end{equation}
+从这个对易关系，我们发现
+\begin{equation}
+    [L^2, L_i] = 0,
+\end{equation}
+这表明$L^2$与$L_i$拥有共同本征态，因此可以作为一组角动量表象下描述量子态的对易力学量集合，这里我们选取$i=z$。
+
+我们设想用$l,m$作为描述$L^2,L_z$的本征态的量子数，用$\ket{lm}$表示。
+假定$L^2,L_z$的量子数为$l,m$的本征态对应的本征值分别为$\lambda\hbar^2$和$m\hbar$，即：
+\begin{equation}
+\begin{aligned}
+    L^2\ket{lm} &= \lambda\hbar^2\ket{lm} \\
+    L_z\ket{lm} &= m\hbar\ket{lm}, \quad m=\cdots -1, 0, 1, \cdots.
+\end{aligned}
+\end{equation}
+这里$m$的取值我们暂时仅仅限定为整数，这一结论可以由$L_z$在球坐标系中的本征态需要满足周期性边界条件确定，而进一步限定$m$的取值范围则需后续讨论。
+
+我们发现，一维谐振子的升降算符法同样可以应用于角动量问题。
+角动量表象下的\emph{升降算符}定义为：
+\begin{equation}
+    L_\pm := L_x \pm \ii L_y.
+\end{equation}
+
+首先来研究一下升降算符的性质：
+\begin{equation}
+    [L_z, L_\pm] = [L_z, L_x \pm \ii L_y] = \pm\hbar L_\pm ,\quad
+    [L^2, L_\pm] = 0, \quad
+    [L_+, L_-] = 2\hbar L_z;
+\end{equation}
+\begin{equation}
+    L_\pm L_\mp = L_x^2 + L_y^2 \pm \ii[L_y, L_x] = L_x^2 + L_y^2 \pm \hbar L_z = L^2 - L_z^2 \pm \hbar L_z.
+\end{equation}
+
+现在，我们来考察升降算符作用在量子态上的情况，我们发现：
+\begin{equation}
+    L_z L_\pm \ket{lm}
+    = (\red{L_\pm L_z} + \blue{[L_z, L_\pm]}) \ket{lm}
+    = (\red{(L_\pm m\hbar)} \blue{\pm (\hbar L_\pm)}) \ket{lm}
+    = (\red{m}\blue{\pm 1})\hbar L_\pm \ket{lm},
+\end{equation}
+这意味着$L_\pm\ket{lm}$也是$L_z$的本征态，且对应的本征值为$(m\pm 1)\hbar$。
+此外，由于$[L^2, L_\pm] = 0$，可以得知$L_\pm\ket{lm}$对应的$L^2$本征值与$\ket{lm}$的相同。
+这就是说
+\begin{equation}
+    L_\pm \ket{lm} = c_{lm}^{(\pm)} \ket{l,m\pm 1},
+\end{equation}
+即升降算符将使得角动量分量$L_z$增加或减少$\hbar$，而不会改变角动量平方值$L^2$。
+
+直到目前，我们尚未明确$\lambda$与$l$的关系。
+这一关系可以借助角动量作为一个矢量所满足的限制条件来确定：
+\begin{equation}
+    L_z^2 \leq L^2, \ \text{i.e.,}\ m^2 \leq \lambda.
+\end{equation}
+这就是说，对于给定的$l$（对应一个确定的$\lambda$），$m$的取值有确定的上下限$\pm m_{\text{max}}$。
+我们不妨置$l=m_{\text{max}}$，那么，对于$m=l$的量子态$\ket{ll}$，升算符作用后的状态应不存在，这就是说
+\begin{equation}
+    L_+ \ket{ll} = 0.
+\end{equation}
+左乘以$L_-$，我们发现
+\begin{equation}
+    L_- L_+ \ket{ll} = (L^2 - L_z^2 - \hbar L_z) \ket{ll} = [\lambda - l(l+1)]\hbar^2 \ket{ll} = 0,
+\end{equation}
+这意味着
+\begin{equation}
+    \lambda = l(l+1),
+\end{equation}
+即$\ket{lm}$态的$L^2$的本征值是$l(l+1)\hbar^2$。
+
+现在，我们成功地用代数方法获得了角动量表象的态空间以及对应的力学量本征值：
+\begin{equation}
+    L^2 \ket{lm} = l(l+1)\hbar^2 \ket{lm},\quad l=0,1,\ldots,
+    L_z \ket{lm} = m\hbar \ket{lm},\quad m=-l,-l+1,\ldots,l.
+\end{equation}
+
+最后，我们再来推导升降算符的矩阵元。
+注意到$L_+ L_-$作用于$\ket{lm}$时，得到的应当是$\ket{lm}$的相应倍数：
+\begin{equation}
+    L_+ L_- \ket{lm} = c_{l,m-1}^{(+)} c_{lm}^{(-)} \ket{lm},
+\end{equation}
+又注意到$L_+^\dag=L_-$，因此
+\begin{equation}
+    c_{lm}^{(-)} = \mel{l,m-1}{L_-}{lm} = \mel{l,m}{L_+}{lm} = c_{l,m+1}^{(+)},
+\end{equation}
+所以我们得到$L_+ L_-$的矩阵元为
+\begin{equation}
+    \mel{lm}{L_+ L_-}{lm} = c_{lm}^{(-)2} = c_{l,m-1}^{(+)2}.
+\end{equation}
+我们再利用$L_+ L_- = L^2 - L_z^2 + \hbar L_z$，有
+\begin{equation}
+    \mel{lm}{L_+ L_-}{lm} = [l(l+1) - m(m-1)] \hbar^2.
+\end{equation}
+对比以上两式，我们就得到升降算符的矩阵元
+\begin{equation}
+\begin{aligned}
+    c_{lm}^{(-)} &= \mel{l,m-1}{L_-}{lm} = \sqrt{l(l+1) - m(m-1)} \hbar = \sqrt{(l+m)(l-m+1)} \hbar,\\
+    c_{lm}^{(+)} &= \mel{l,m+1}{L_+}{lm} = \sqrt{l(l+1) - m(m+1)} \hbar = \sqrt{(l-m)(l+m+1)} \hbar,
+\end{aligned}
+\end{equation}
+这里矩阵元的正负号可利用$L_+\ket{ll}=0$与$L_-\ket{l-l}=0$助记。
+
+至于$L_x, L_y$的矩阵元，可利用
+\begin{equation}
+    L_x = \frac12 (L_+ + L_-), \quad L_y = \frac{1}{2\ii} (L_+ - L_-)
+\end{equation}
+求解：
+\begin{equation}
+\begin{aligned}
+    \mel{l,m+1}{L_x}{lm} &= \frac12 c_{lm}^{(+)},\\
+    \mel{l,m-1}{L_x}{lm} &= \frac12 c_{lm}^{(-)},\\
+    \mel{l,m+1}{L_y}{lm} &= \frac{1}{2\ii} c_{lm}^{(+)},\\
+    \mel{l,m-1}{L_y}{lm} &= -\frac{1}{2\ii} c_{lm}^{(-)}.
+\end{aligned}
+\end{equation}
+
+\begin{tcolorbox}[breakable, title={\textbf{例题}}]
+    \paragraph{题目} \textit{（2019年考研·四）}
+    对于$\ket{lm}$态，求：\\
+    (1) $\expval{L_x}, \expval{L_y}$；\\
+    (2) $\expval{\Delta L_x^2}, \expval{\Delta L_y^2}$。
+
+    \paragraph{解答}
+    (1) 我们知道
+    \begin{equation}
+        \mel{lm}{L_+}{lm} = c_{lm}^{(+)} \braket{lm}{l,m+1} = 0, \quad
+        \mel{lm}{L_-}{lm} = c_{lm}^{(-)} \braket{lm}{l,m-1} = 0,
+    \end{equation}
+    而$L_x, L_y$为$L_+, L_-$的线性组合，因此其对角矩阵元均为零：
+    \begin{equation}
+        \expval{L_x} = \mel{lm}{L_x}{lm} = 0, \quad
+        \expval{L_y} = \mel{lm}{L_y}{lm} = 0.
+    \end{equation}
+    (2) 以$\Delta L_x^2$为例。
+    由于$\expval{\Delta L_x^2}=\expval{L_x^2}-\expval{L_x}^2=\expval{L_x^2}$，仅需计算$L_x^2$的对角矩阵元。
+    我们写出$L_x^2$关于升降算符的表达式：
+    \begin{equation}
+        L_x^2 = \frac14 (L_+ + L_-)^2 = \frac14 (L_+^2 + L_-^2 + L_+ L_- + L_- L_+).
+    \end{equation}
+    显然，仅有$L_+ L_- + L_- L_+$项的对角矩阵元非零：
+    \begin{equation}
+    \begin{aligned}
+        \mel{lm}{L_+ L_-}{lm} &= c_{lm}^{(-)2} = \sqrt{l(l+1)-m(m-1)}\hbar^2, \\
+        \mel{lm}{L_- L_+}{lm} &= c_{lm}^{(+)2} = \sqrt{l(l+1)-m(m+1)}\hbar^2.
+    \end{aligned}
+    \end{equation}
+    因此
+    \begin{equation}
+        \expval{\Delta L_x^2} = \frac14 (c_{lm}^{(-)2} + c_{lm}^{(+)2}) = \frac12 [l(l+1)-m^2]\hbar^2.
+    \end{equation}
+    同理可得
+    \begin{equation}
+        \expval{\Delta L_y^2} = \expval{\Delta L_x^2} = \frac12 [l(l+1)-m^2]\hbar^2.
+    \end{equation}
+    \hfill $\square$
+\end{tcolorbox}
