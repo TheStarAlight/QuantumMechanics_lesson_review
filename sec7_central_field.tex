@@ -133,7 +133,7 @@
     \begin{equation}
         \ket{\psi(0)} = \frac12\ket{210} - \frac{1}{\sqrt{2}}\ket{310} - \frac{1}{\sqrt{2}}\ket{21-1},
     \end{equation}
-    求$H, l^2, l_z$三个力学量：
+    求$H, L^2, L_z$三个力学量：
     \begin{enumerate}
         \item{在$t=0$时刻的测值概率分布及平均值；}
         \item{任意$t$时刻的测值概率分布及平均值。}
@@ -170,10 +170,10 @@
     \begin{equation}
     \begin{aligned}
         P_{l=1} &= 1, \\
-        \expval{l^2} &= 2\hbar^2; \\
+        \expval{L^2} &= 2\hbar^2; \\
         P_{m=0} &= 3/5, \\
         P_{m=-1} &= 2/5, \\
-        \expval{l_z} &= \frac35 \cdot 0\hbar + \frac25 \cdot -\hbar = -\frac25\hbar.
+        \expval{L_z} &= \frac35 \cdot 0\hbar + \frac25 \cdot -\hbar = -\frac25\hbar.
     \end{aligned}
     \end{equation}
 
@@ -182,8 +182,66 @@
         \ket{\psi(0)} = \left(\frac{1}{\sqrt{5}}\ket{210} - \sqrt{\frac25}\ket{21-1}\right) \ee^{-\ii E_0 t/4\hbar} - \sqrt{\frac25}\ket{310} \ee^{-\ii E_0 t/9\hbar}.
     \end{equation}
     在按前一题的方法计算测值概率时，只要将对应的系数乘以相应的量子相位即可。
-    事实上，我们要注意到，在氢原子体系中，$H, l^2, l_z$三个力学量均与Hamiltonian量对易，因此是守恒量，因此无论系统是否处于单个能量本征态，其力学量测值概率分布均不随时间而变。
+    事实上，我们要注意到，在氢原子体系中，$H, L^2, L_z$三个力学量均与Hamiltonian量对易，因此是守恒量，因此无论系统是否处于单个能量本征态，其力学量测值概率分布均不随时间而变。
     因此$t>0$时刻的测值分布与平均值与$t=0$时完全一样。
     \hfill $\square$
 
+\end{tcolorbox}
+
+\begin{tcolorbox}[breakable, title={\textbf{例题}}]
+    \paragraph{题目} \textit{（2025年考研·三）}
+    质量为$m$的粒子在有心势场$V(r)=kr$中运动。
+    以$\psi(r)\sim\ee^{-\lambda r}$为试探解，$\lambda$为变分参数，试用变分法估算体系的基态能量。
+
+    \paragraph{解答}
+
+    首先，试探解未归一化，因此第一步要写出变分参数$\lambda$对应的归一化试探解：
+    \begin{equation}
+        \psi(r) = N_\lambda \ee^{-\lambda r},
+    \end{equation}
+    归一化条件为
+    \begin{equation}
+    \begin{aligned}
+        1 &= \int_0^\infty 4\pi r^2 \dd r \abs{\psi(r)}^2 \\
+        &= 4\pi N_\lambda^2 \int_0^\infty r^2 \ee^{-2\lambda r} \dd r \\
+        &= 4\pi N_\lambda^2 (2\lambda)^{-3} \int_0^\infty \rho^2 \ee^{-\rho} \dd\rho \\
+        &= 4\pi N_\lambda^2 (2\lambda)^{-3} \cdot 2!,
+    \end{aligned}
+    \end{equation}
+    可得归一化常数
+    \begin{equation}
+        N_\lambda = \sqrt{\frac{\lambda^3}{\pi}}.
+    \end{equation}
+
+    在坐标表象下计算试探解的能量期望值$\expval{H}_\lambda$，分别计算势能$\expval{V}$与动能$\expval{T}$：
+    \begin{equation}
+    \begin{aligned}
+        \expval{V}_\lambda
+        &= \int_0^\infty 4\pi r^2 \dd r \abs{\psi(r)}^2 V(r) \\
+        &= 4\pi k N_\lambda^2 \int_0^\infty r^3 \ee^{-2\lambda r} \dd r \\
+        &= 4\pi k N_\lambda^2 (2\lambda)^{-4} \int_0^\infty \rho^3 \ee^{-\rho} \dd\rho \\
+        &= 4\pi k N_\lambda^2 (2\lambda)^{-4} \cdot 3! \\
+        &= \frac{3k}{2\lambda},
+    \end{aligned}
+    \end{equation}
+    \begin{equation}
+    \begin{aligned}
+        \expval{T}_\lambda
+        &= \int_0^\infty 4\pi r^2 \dd r \psi(r) \cdot \left(-\frac{\hbar^2}{2m}\underbrace{\nabla^2 \psi(r)}_{\pd^2_{rr}\psi(r)}\right) \\
+        &= \int_0^\infty 4\pi r^2 \dd r \psi(r) \cdot \left(\frac{\hbar^2}{2m}\lambda^2 \psi(r)\right) \\
+        &= \frac{\hbar^2}{2m}\lambda^2,
+    \end{aligned}
+    \end{equation}
+    于是参数$\lambda$对应的能量期望值是
+    \begin{equation}
+        \expval{H}_\lambda = \frac{3k}{2\lambda} + \frac{\hbar^2}{2m}\lambda^2,
+    \end{equation}
+    $\expval{H}$关于$\lambda$函数在$\pd_\lambda \expval{H} = 0$，对应
+    \begin{equation}
+        \lambda_0 = \sqrt[3]{\frac{2m}{3\hbar^2 k}}
+    \end{equation}
+    时取得极小值，为
+    \begin{equation}
+        E_0 = \frac94\sqrt[3]{\frac{2\hbar^2 k^2}{3m}}.
+    \end{equation}
 \end{tcolorbox}
