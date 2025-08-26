@@ -1,0 +1,532 @@
+\section{微扰论}
+\label{sec:perturbation}
+
+在任何学科中，能够精确、完全解析处理的问题少之又少，在量子力学中也是如此。
+微扰作为一种重要的近似方法，被广泛应用在量子力学各类问题的研究中，这类问题都有一个特点：由主体部分和``微扰''（perturbation）部分组成，其主体部分拥有精确解，而微扰部分相比主体部分微弱得多。
+微扰方法的关键思想就是：将微扰部分对系统带来的影响用``修正''（correction）表示，用一个渐近级数来逼近真实的解。
+
+% =================================================
+\subsection{非简并定态微扰}
+\label{subsec:non_deg_stationary_perturbation}
+
+我们假定系统的Hamiltonian为
+\begin{equation}
+    H = H_0 + λH',
+\end{equation}
+其中$H_0$为未扰Hamiltonian，$λH'$为微扰Hamiltonian，$λ$作为一个小的参数。
+未扰体系有精确解$\ket{m^{(0)}}$，满足
+\begin{equation}
+    H_0\ket{m^{(0)}} = E^{(0)}_m\ket{m^{(0)}}.
+\end{equation}
+
+在微扰论中，我们将对态$\ket{m}$和能量$E_m$的修正表为关于$λ$的级数：
+\begin{equation}
+\begin{aligned}
+    \ket{m} &= \ket{m^{(0)}} + \ket{m^{(1)}}λ + \ket{m^{(2)}}λ^2 + ⋯,\\
+    E_m &= E_m^{(0)} + E_m^{(1)}λ + E_m^{(2)}λ^2 + ⋯.
+\end{aligned}
+\end{equation}
+将这一级数代入Schrödinger方程，可得满足的关系：
+\begin{equation}
+    (H_0+λH')\left(\ket{m^{(0)}} + \ket{m^{(1)}}λ + ⋯\right) = \left(E_m^{(0)} + E_m^{(1)}λ + ⋯\right) \left(\ket{m^{(0)}} + \ket{m^{(1)}}λ + ⋯\right).
+\end{equation}
+这一式等号两侧可以分别整理为$λ$的级数，每一阶的系数都相同，就分别得到一个方程。
+
+\noindent
+\fbox{\textbf{ 零阶 }}
+$λ$的零阶方程就对应未扰系统的Schrödinger方程
+\begin{equation}
+    H_0\ket{m^{(0)}} = E^{(0)}_m\ket{m^{(0)}}.
+\end{equation}
+
+\noindent
+\fbox{\textbf{ 一阶 }}
+$λ$的一阶方程为
+\begin{equation}
+    \label{eq:perturb_lambda_first_order}
+    H'\ket{m^{(0)}}+H_0\ket{m^{(1)}} = E^{(1)}_m\ket{m^{(0)}}+E^{(0)}_m\ket{m^{(1)}}.
+\end{equation}
+移项后，可得
+\begin{equation}
+    (H'-E_m^{(1)})\ket{m^{(0)}} + (H_0-E_m^{(0)})\ket{m^{(1)}} = 0.
+\end{equation}
+如果我们插入一组能量本征态$\ket{n^{(0)}}$（具有本征值$E_n^{(0)}$）的完备性关系
+\begin{equation}
+    \mathbb{1} = ∑_n \ketbra{n^{(0)}},
+\end{equation}
+依$n=m$和$n≠m$分开，并利用$\ket{n^{(0)}}$是正交归一的能量本征态，上式就成为
+\begin{equation}
+\begin{aligned}
+    & \left[\mel{m^{(0)}}{H'}{m^{(0)}} + (E_m^{(0)}-E_m^{(0)})\braket{m^{(0)}}{m^{(1)}} - E_m^{(1)}\right]\ket{m^{(0)}} \\
+    +& ∑_{n≠m} \left[\mel{n^{(0)}}{H'}{m^{(0)}} + (E_n^{(0)}-E_m^{(0)})\braket{n^{(0)}}{m^{(1)}}\right]\ket{n^{(0)}} = 0.
+\end{aligned}
+\end{equation}
+
+我们先看$n=m$的情形，给出
+\begin{equation}
+    \underbrace{\mel{m^{(0)}}{H'}{m^{(0)}}}_{H'_{mm}} + (E_m^{(0)}-E_m^{(0)})\braket{m^{(0)}}{m^{(1)}} - E_m^{(1)} = 0.
+\end{equation}
+这里需要分清哪些是待定量，哪些是已知量：$H'_{mm}$和$E_m^{(0)}$是独立的已知量，而$E_m^{(1)}$和$\braket{m^{(0)}}{m^{(1)}}$（即$\ket{m^{(1)}}$投影在$\ket{m^{(0)}}$的分量）是待定量。
+这个式子保留了$(E_m^{(0)}-E_m^{(0)})=0$，就是因为$\braket{m^{(0)}}{m^{(1)}}$也是待定量，只是由于其系数为0，无法从本式中确定其取值。
+\emph{一阶能量修正}$E_m^{(1)}$为
+\begin{equation}
+    \label{eq:perturb_energy_corr_1}
+    E_m^{(1)} = H'_{mm}.
+\end{equation}
+
+再看$n≠m$的情形，给出
+\begin{equation}
+    \underbrace{\mel{n^{(0)}}{H'}{m^{(0)}}}_{H'_{nm}} + (E_n^{(0)}-E_m^{(0)})\braket{n^{(0)}}{m^{(1)}} = 0.
+\end{equation}
+通过该式可以求出\emph{态的一阶修正}
+\begin{equation}
+    \braket{n^{(0)}}{m^{(1)}} = \frac{H'_{nm}}{E_m^{(0)}-E_n^{(0)}}\quad (n≠m).
+\end{equation}
+可见，为使这里的一阶修正不发散，须假定体系没有简并能级。
+我们可以这样理解：
+加入了微扰项$λH'$后，$\ket{m^{(0)}}$不再是新Hamiltonian $H_0+λH'$的本征态，而是混入了其他未扰能级$\ket{n^{(0)}}$的成分，这些成分将使能级发生偏移。
+
+最后我们还需确定$\braket{m^{(0)}}{m^{(1)}}$，可以借助一阶近似下的态$\ket{m^{(0)}}+λ\ket{m^{(1)}}$的归一化条件
+\begin{equation}
+    \left(\bra{m^{(0)}}+λ\bra{m^{(1)}}\right)\left(\ket{m^{(0)}}+λ\ket{m^{(1)}}\right) = 1 + o(λ).
+\end{equation}
+显然，这要求
+\begin{equation}
+    \braket{m^{(0)}}{m^{(1)}} = 0.
+\end{equation}
+
+现在我们就得到\emph{态的一阶修正}：
+\begin{equation}
+    \label{eq:perturb_state_corr_1}
+    \braket{n^{(0)}}{m^{(1)}} = \begin{cases}
+        \frac{H'_{nm}}{E_m^{(0)}-E_n^{(0)}}    & n≠m,\\
+        0,  & n=m.
+    \end{cases}
+\end{equation}
+
+\noindent
+\fbox{\textbf{ 二阶 }}
+$λ$的二阶方程为
+\begin{equation}
+    H_0\ket{m^{(2)}} + H'\ket{m^{(1)}} = E_m^{(0)}\ket{m^{(2)}} + E_m^{(1)}\ket{m^{(1)}} + E_m^{(2)}\ket{m^{(0)}},
+\end{equation}
+移项后变为
+\begin{equation}
+    (H_0-E_m^{(0)})\ket{m^{(2)}} + (H'-E_m^{(1)})\ket{m^{(1)}} - E_m^{(2)}\ket{m^{(0)}} = 0.
+\end{equation}
+
+我们依然采用一阶的做法，上式左乘$\bra{m^{(0)}}$即得
+\begin{equation}
+    \mel{m^{(0)}}{H'}{m^{(1)}} - E_m^{(1)}\underbrace{\braket{m^{(0)}}{m^{(1)}}}_{=0} - E_m^{(2)} = 0,
+\end{equation}
+再借助态的一阶修正「式\eqref{eq:perturb_state_corr_1}」，可得\emph{能量二阶修正}：
+\begin{equation}
+    E_m^{(2)} = \mel{m^{(0)}}{H'}{m^{(1)}} = ∑_{n≠m}\frac{H'_{mn}H'_{nm}}{E_m^{(0)}-E_n^{(0)}} = ∑_{n≠m}\frac{\abs{H'_{mn}}^2}{E_m^{(0)}-E_n^{(0)}}.
+\end{equation}
+这里利用了$H'$是Hermite算符，满足$H'_{mn}=H'^*_{nm}$。
+
+\emph{态的二阶修正}通过左乘$\bra{n^{(0)}}$（$n≠m$）得到，可得其表式为
+\begin{equation}
+    \braket{n^{(0)}}{m^{(2)}} = \frac{\mel{n^{(0)}}{H'-E_m^{(1)}}{m^{(1)}}}{E_m^{(0)}-E_n^{(0)}}.
+\end{equation}
+通过展开$H'$与$\ket{m^{(1)}}$，可以得到更具体的表达式，此处不再赘述。
+
+
+\begin{tcolorbox}[breakable, colframe=purple, colback=red!10, title={\textbf{高阶微扰的一般表式}}]
+\it\small
+从一阶和二阶修正的表达式中，我们已经可以看出一些规律。
+现在我们来推导一下高阶微扰修正所应满足的方程。
+
+我们写出$λ$的$k$阶方程
+\begin{equation}
+    H_0\ket{m^{(k)}} + H'\ket{m^{(k-1)}} = ∑_{i=0}^{k} E_m^{(i)}\ket{m^{(k-i)}}.
+\end{equation}
+左乘$\bra{m^{(0)}}$，利用高阶态修正均不含$\ket{m^{(0)}}$，即得能量修正
+\begin{equation}
+    E_m^{(k)} = \mel{m^{(0)}}{H'}{m^{(k-1)}}.
+\end{equation}
+左乘$\bra{n^{(0)}}$（$n≠m$），可得态修正
+\begin{equation}
+    \braket{n^{(0)}}{m^{(k)}} = \frac{\mel{n^{(0)}}{H'}{m^{(k-1)}}-∑_{i=1}^{k}E_m^{(i)}\braket{n^{(0)}}{m^{(k-i)}}}{E_m^{(0)}-E_n^{(0)}}.
+\end{equation}
+
+\end{tcolorbox}
+
+% =================================================
+\subsection{简并情形定态微扰}
+\label{subsec:deg_stationary_perturbation}
+
+我们在上一节所获得的微扰公式，其仅在无简并情形下适用。
+对于存在简并态的情形，微扰修正公式中的分母$E_n^{(0)}-E_m^{(0)}$将出现等于零的情况，这就是说，原有基组的微扰结果发散。
+对于这种情况，需另行选择另一组合适的基组。
+
+我们假定一组能级简并态基组为$\{\ket{n^{(0)}}\}$（$n=1,2,⋯,s_0$，其中$s_0$为简并度），其拥有相同的能级$E^{(0)}$。
+这些简并态可以线性组合为新的基组，系数为$c^{(0)}_{mn}$：
+\begin{equation}
+    \ket{m^{(0)}} = ∑_{n} c^{(0)}_{mn}\ket{n^{(0)}}.
+\end{equation}
+在一阶微扰下，$\ket{m^{(0)}}$须满足$λ$的一阶方程「式\eqref{eq:perturb_lambda_first_order}」。
+我们左乘原基组的态$\bra{n^{(0)}}$，因仅计及一阶能级修正，我们略去$\ket{m^{(1)}}$，得到：
+\begin{equation}
+    \mel{n^{(0)}}{H'-E_m^{(1)}}{m^{(0)}} = 0,
+\end{equation}
+这等价于
+\begin{equation}
+    \label{eq:perturb_pertHamil_eigen_eq}
+    H'\ket{m^{(0)}} = E_m^{(1)}\ket{m^{(0)}}.
+\end{equation}
+该式实际上是一个关于$H'$的本征方程，其中$E_m^{(1)}$作为本征值，本征矢则是$\ket{m^{(0)}}$。
+因此，$\ket{m^{0}}$应当选取为$H'$的各本征态（即选取$H'$为对角的表象），对应的本征值即为一阶能级修正$E_m^{(1)}$。
+
+倘若无法直接看出$H'$的本征态，那就要通过具体计算来求解。
+方程\eqref{eq:perturb_pertHamil_eigen_eq}有非平凡解$\ket{m^{(0)}}$的要求是
+\begin{equation}
+    \label{eq:perturb_secular_eq}
+    \det(H'-E_m^{(1)}) = 0,
+\end{equation}
+这个方程称为\emph{久期方程（secular equation）}
+\footnote{这个名字来源于天体物理。在使用经典力学微扰求解行星运动受周期性扰动从而产生一个``长期''的偏离效应时，也出现了这个方程。}。
+在$\ket{n^{(0)}}$表象下求解久期方程，即得叠加系数$c_{mn}^{(0)}$，线性组合得到的$\ket{m^{(0)}}$就是一阶能级修正为$E_m^{(0)}$的未扰态。
+
+一般来说，$H'$的引入将导致不同的一阶能级修正$E_m^{(1)}$（即久期方程\eqref{eq:perturb_secular_eq}没有重根），从而解除各态的简并。
+若一阶能级修正仍不足以解除简并，则需在式\eqref{eq:perturb_lambda_first_order}中计及一阶态修正$\ket{m^{(1)}}$。
+
+
+% =================================================
+% 习题
+\begin{tcolorbox}[breakable, title={\textbf{例题1}}]
+    \it\small
+    \fbox{ \textbf{题目} }
+    （2020年考研 · 七）
+    一个质量为$m$的粒子被限制在半径为$a$的圆周上。求：\\
+    (1) 体系的能量本征态波函数；\\
+    (2) 设$θ$为圆周上的角度，对于微扰$H'=λ\sin{2θ}$，求微扰对基态波函数的一级修正、对基态能级的二级修正；\\
+    (3) 在(2)的情形下，求微扰对第一激发态能级的一级修正与相应的零级波函数。\\
+
+    \fbox{ \textbf{解答} }
+
+    (1)
+    首先，我们写出这个体系的Hamiltonian，假定圆环的轴线与$z$轴重合，有两种写法：
+    \begin{equation}
+        H = \frac12 Jω^2 \quad\rm{or}\quad H = \frac{L_z^2}{2J},
+    \end{equation}
+    这里$J=ma^2$是转动惯量，$L_z$和$ω$分别是角动量和角速度。
+    选取角动量表示Hamiltonian的好处在于其表式是我们熟知的$L_z=\ii\hbar\pd_θ$。
+    如果是用角速度表示，那就需要通过与角动量的关系进行转换，或者通过量纲分析配凑。
+
+    未扰体系的定态Schrödinger方程，在$θ$表象下为
+    \begin{equation}
+        \frac{1}{2J}L_z^2 ψ(θ) = -\frac{\hbar^2}{2J}\pd^2_{θθ} ψ(θ) = Eψ(θ).
+    \end{equation}
+    这个方程类似于圆环上的弦振动方程，有周期性边界条件，通解是
+    \begin{equation}
+        ψ(θ) = A\cos{nθ} + B\sin{nθ}.
+    \end{equation}
+    需要注意的是，$n=0$的情况需要特别讨论。
+    我们写出归一化解为
+    \begin{equation}
+    \begin{aligned}
+        ψ_0(θ) &= \frac{1}{\sqrt{2π}};\\
+        ψ_{n\rm{c}}(θ) &= \frac{1}{\sqrtπ}\cos{nθ}, n=1,2,⋯;\\
+        ψ_{n\rm{s}}(θ) &= \frac{1}{\sqrtπ}\sin{nθ}, n=1,2,⋯.\\
+    \end{aligned}
+    \end{equation}
+    根据解的性质很容易得到对应的能量
+    \begin{equation}
+        E_n = \frac{n^2\hbar^2}{2J} = \frac{n^2\hbar^2}{2ma^2}.
+    \end{equation}
+
+    (2)
+    基态是非简并的，适用非简并微扰论。
+
+    在求解中，需要用到矩阵元$\mel{k}{H'}{0}$，其中$k=0,1\rm{c},1\rm{s},2\rm{c},2\rm{s},⋯$为态的指标。
+    显然，根据三角函数的正交性，$\mel{k}{H'}{0}$仅有$k=2\rm{s}$这一项不为零：
+    \begin{equation}
+        \mel{0}{H'}{0} = 0, \quad
+        \mel{k≠0}{H'}{0} = \frac{λ}{\sqrt{2}} δ_{k,2\rm{s}}.
+    \end{equation}
+
+    零级能量为$E_0^{(0)}=0$。
+    一级能量修正为
+    \begin{equation}
+        E_0^{(1)} = \mel{0}{H'}{0} = 0.
+    \end{equation}
+    二级能量修正为
+    \begin{equation}
+        E_0^{(2)} = ∑_{k≠0}\frac{\abs{\mel{k}{H'}{0}}^2}{E_0^{(0)}-E_k^{(0)}} = \frac{\abs{\mel{2\rm{s}}{H'}{0}}^2}{E_0^{(0)}-E_2^{(0)}} = -\frac{Jλ^2}{4\hbar^2}.
+    \end{equation}
+    一级波函数修正为
+    \begin{equation}
+        \braket{k^{(0)}}{0^{(1)}} = \frac{\mel{k}{H'}{0}}{E_0^{(0)}-E_k^{(0)}} = -\frac{Jλ}{2\sqrt2\hbar^2}.
+    \end{equation}
+
+    (3)
+    第一激发态是$k=1\rm{c},1\rm{s}$，是一对简并态，因此需要重新组合两个态作为零级波函数。
+    久期方程表为
+    \begin{equation}
+        \begin{vmatrix}
+            H'_{1\rm{c}1\rm{c}}-E^{(1)} & H'_{1\rm{c}1\rm{s}} \\
+            H'_{1\rm{s}1\rm{c}} & H'_{1\rm{s}1\rm{s}}-E^{(1)}
+        \end{vmatrix} = 0.
+    \end{equation}
+    求解$H'$的各矩阵元时，依然可以利用三角函数的正交性：
+    在$H'_{1\rm{c}1\rm{c}}$和$H'_{1\rm{s}1\rm{s}}$中，波函数内积$\cos^2{θ}$、$\sin^2{θ}$均与$H'$对应的$\sin{2θ}$正交，因此两个矩阵元均为零。
+    而
+    \begin{equation}
+        H'_{1\rm{c}1\rm{s}} = H'^*_{1\rm{s}1\rm{c}} = \mel{1\rm{c}}{H'}{1\rm{s}} = \fracλ2.
+    \end{equation}
+    因此久期方程为
+    \begin{equation}
+        \begin{vmatrix}
+            -E^{(1)} & λ/2\\ λ/2 & -E^{(1)}
+        \end{vmatrix} = 0,
+    \end{equation}
+    解为$E_a^{(1)}=λ/2, E_b^{(1)}=-λ/2$，对应的零级态分别为
+    \begin{equation}
+        ψ_a = \frac{1}{\sqrt2}\ket{1\rm{c}} + \frac{1}{\sqrt2}\ket{1\rm{s}},\quad
+        ψ_b = \frac{1}{\sqrt2}\ket{1\rm{c}} - \frac{1}{\sqrt2}\ket{1\rm{s}}.
+    \end{equation}
+    \hfill $\square$
+\end{tcolorbox}
+
+\begin{tcolorbox}[breakable, title={\textbf{例题1}}]
+    \it\small
+    \fbox{ \textbf{题目} }
+    （2021年考研 · 七）
+    一个质量为$m$的粒子处于二维势场：
+    \begin{equation}
+        V(x,y) = \frac12 mω^2 (x^2+y^2) + λxy,
+    \end{equation}
+    其中$λ$是小的实参量。将$H'=λxy$视为微扰，求：\\
+    (1) 基态、第一激发态、第二激发态的零级近似能量；\\
+    (2) 基态、第一激发态、第二激发态的一级近似能量。\\
+    提示：一维谐振子Fock表象的升降算符与坐标、动量算符间的变换关系：
+    \begin{equation}
+        x=\sqrt{\frac{\hbar}{2mω}}(a+\adag),\quad
+        p=-\ii\sqrt{\frac{m\hbar ω}{2}}(a-\adag).
+    \end{equation}
+
+    \fbox{ \textbf{解答} }
+    我们在Fock表象下求解这个问题。
+    设$x$方向的玻色升降算符为$a,\adag$，$y$方向的玻色升降算符为$b,\bdag$。体系的未扰Hamiltonian表为
+    \begin{equation}
+        H_0 = \hbar ω (\adag a+\bdag b +1),
+    \end{equation}
+    微扰Hamiltonian为
+    \begin{equation}
+        H' = \frac{\hbar λ}{2mω} (a+\adag)(b+\bdag) = λ' (a+\adag)(b+\bdag).
+    \end{equation}
+
+    (1)
+    未扰体系的能量本征态可以表为
+    \begin{equation}
+        \ket{m_x n_y} = \ket{m}_x ⊗ \ket{n}_y,\quad
+        m,n = 0,1,2,⋯
+    \end{equation}
+    对应的能量是
+    \begin{equation}
+        E^{(0)}_{mn} = \hbar ω (m+n+1).
+    \end{equation}
+    于是很容易就得到：
+    \begin{itemize}
+        \item 基态：$\ket{00}$，对应能量$E^{(0)}=\hbar ω$；
+        \item 第一激发态：$\ket{10},\ket{01}$，对应能量$E^{(0)}=2\hbar ω$；
+        \item 第二激发态：$\ket{20},\ket{11},\ket{02}$，对应能量$E^{(0)}=3\hbar ω$。
+    \end{itemize}
+
+    (2)
+    体系的基态不简并，因此一阶能量修正为
+    \begin{equation}
+        E^{(1)}_{00} = \mel{00}{H'}{00} = λ' \mel{0}{a+\adag}{0}\mel{0}{b+\bdag}{0} = 0.
+    \end{equation}
+    这里需要用到升降算符对Fock态的作用：
+    \begin{equation}
+        a\ket{n} = \sqrt{n}\ket{n-1},\quad
+        \adag\ket{n} = \sqrt{n+1}\ket{n+1}.
+    \end{equation}
+    在求解$H'$的矩阵元时，注意我们选择的基底对于$H'$是可分离变量的，将$x$与$y$方向的算符分开计算可以大大简化繁琐的运算。
+
+    第一激发态与第二激发态均简并，因此须求解久期方程。
+    对于第一激发态，选取基底$\ket{10},\ket{01}$，久期方程表为
+    \begin{equation}
+        \begin{vmatrix}
+            H'_{10,10}-E^{(1)} & H'_{10,01}\\
+            H'_{01,10} & H'_{01,01}-E^{(1)}
+        \end{vmatrix} = 0.
+    \end{equation}
+    算符$a+\adag$的特点是将$\ket{n}$变为$\ket{n-1}$与$\ket{n+1}$的线性组合，因此$H'$的对角元必定为零。
+    两个非对角元是
+    \begin{equation}
+        H'_{01,10} = H'^*_{10,01} = λ'\mel{0}{a+\adag}{1}\mel{1}{b+\bdag}{0} = λ'\mel{0}{a}{1}\mel{1}{\bdag}{0} = λ'.
+    \end{equation}
+    于是得久期方程的解为
+    \begin{equation}
+        E_a^{(1)} = λ',\quad
+        E_b^{(1)} = -λ',
+    \end{equation}
+    分别对应
+    \begin{equation}
+        \ket{ψ_a^{(0)}} = \frac{1}{\sqrt2}\ket{10}+\frac{1}{\sqrt2}\ket{01},\quad
+        \ket{ψ_b^{(0)}} = \frac{1}{\sqrt2}\ket{10}-\frac{1}{\sqrt2}\ket{01}.
+    \end{equation}
+
+    对于第二激发态，选取基底$\ket{20},\ket{11},\ket{02}$。
+    我们先来研究$H'$的矩阵元，考虑到$(a+\adag)$算符的特性，应当只有$(20,11)$和$(11,02)$之间$H'$的矩阵元不为零，我们求取
+    \begin{equation}
+    \begin{aligned}
+        H'_{20,11} &= H'^*_{11,20} = λ'\mel{2}{\adag}{1}\mel{0}{b}{1} = \sqrt2 λ';\\
+        H'_{11,02} &= H'^*_{02,11} = λ'\mel{1}{\adag}{0}\mel{1}{b}{2} = \sqrt2 λ'.
+    \end{aligned}
+    \end{equation}
+    于是久期方程成为
+    \begin{equation}
+        \begin{vmatrix}
+            -E^{(1)} & \sqrt2 λ'\\
+            \sqrt2 λ'& -E^{(1)} & \sqrt2 λ'\\
+                     & \sqrt2 λ'& -E^{(1)}
+        \end{vmatrix} = 0,
+    \end{equation}
+    根据三阶行列式的求和规则（对角线法），久期方程等价于
+    \begin{equation}
+        -{E^{(1)}}^3 + 4E^{(1)}λ'^2 = 0,
+    \end{equation}
+    方程的解为
+    \begin{equation}
+        E_c^{(1)} = 0, E_d^{(1)} = 2λ', E_e^{(1)} = -2λ'.
+    \end{equation}
+    对应的本征矢为
+    \begin{equation}
+        c→\begin{bmatrix}1/\sqrt2\\0\\-1/\sqrt2\end{bmatrix},
+        d→\begin{bmatrix}1/2\\1/\sqrt2\\1/2\end{bmatrix},
+        e→\begin{bmatrix}1/2\\-1/\sqrt2\\1/2\end{bmatrix}.
+    \end{equation}
+    对应零阶态此处从略不表。
+    \hfill $\square$
+
+\end{tcolorbox}
+
+% =================================================
+\subsection{含时微扰}
+\label{subsec:time_dependent_perturbation}
+
+现在我们来研究微扰项含时的情形。
+在Hamiltonian含时的情况下，能量并不守恒，因此也没有能级修正一说，我们只是对量子态作近似计算。
+
+我们采用与\ref{subsec:non_deg_stationary_perturbation}节类似的做法。
+我们假定微扰Hamiltonian为$H_0+λH'(t)$，原Hamiltonian $H_0$的本征态为$\ket{ψ^{(0)}}$。
+微扰的解$\ket{ψ(t)}$满足的Schrödinger方程为
+\begin{equation}
+    \label{eq:perturb_timedep_schrodinger_mt}
+    \ii\hbar\pd_t \ket{ψ(t)} = (H_0+λH'(t)) \ket{ψ(t)}.
+\end{equation}
+在含时微扰中，一般选择未扰情况下自由演化的态
+\begin{equation}
+    \ket{m^{(0)}(t)} = \ket{m^{(0)}}\ee^{-\ii ω_m t}
+\end{equation}
+作为基底（为方便起见我们设$ω_m:=E_m/\hbar$），考虑投影系数
+\begin{equation}
+    a_m(t) := \braket{m^{(0)}(t)}{ψ(t)}
+\end{equation}
+随时间的变化。
+这样，我们可以将式\eqref{eq:perturb_timedep_schrodinger_mt}写成关于$a_m(t)$的方程：
+\begin{equation}
+    \ii\hbar\pd_t ∑_m \left(a_m(t)\ket{m^{(0)}(t)}\right) = ∑_m a_m(t)(H_0+λH'(t))\ket{m^{(0)}(t)}.
+\end{equation}
+利用$\ii\hbar\pd_t\ket{m^{(0)}(t)}=H_0\ket{m^{(0)}(t)}$，化简为
+\begin{equation}
+    \ii\hbar ∑_m \dot{a}_m(t)\ket{m^{(0)}(t)} = λ ∑_m a_m(t) H'(t)\ket{m^{(0)}(t)}.
+\end{equation}
+再左乘$\bra{n^{(0)}(t)}$，得到
+\begin{equation}
+    \ii\hbar\dot{a}_n(t) = λ ∑_m a_m(t) \mel{n^{(0)}(t)}{H'(t)}{m^{(0)}(t)}.
+\end{equation}
+我们置$ω_{nm}:=ω_n-ω_m$，以及
+\begin{equation}
+    \mel{n^{(0)}(t)}{H'(t)}{m^{(0)}(t)}
+    = \mel{n^{(0)}}{H'(t)}{m^{(0)}}\ee^{\ii ω_{nm}t}
+    = H'_{nm}(t)\ee^{\ii ω_{nm}t}
+    = \tilde{H}'_{nm}(t),
+\end{equation}
+于是方程化为
+\begin{equation}
+    \ii\hbar\dot{a}_n(t) = λ ∑_m \tilde{H}'_{nm}(t) a_m(t),
+\end{equation}
+写成矩阵形式则为：
+\begin{equation}
+    \ii\hbar\dot{\bm{a}}(t) = λ \tilde{\bm{H}}'(t) \bm{a}(t).
+\end{equation}
+我们将$\bm{a}(t)$表为$λ$的级数：
+\begin{equation}
+    \bm{a}(t) = \bm{a}^{(0)}(t) + \bm{a}^{(1)}(t)λ + \bm{a}^{(2)}(t)λ^2 + ⋯
+\end{equation}
+代入上式，即得关于$λ$的各阶方程。
+
+$λ$的零阶方程为
+\begin{equation}
+    \ii\hbar\dot{\bm{a}}^{(0)}(t) = \bm{0}.
+\end{equation}
+这说明零阶近似下$\bm{a}^{(0)}(t)$为常数。
+
+$λ$的一阶方程为
+\begin{equation}
+    \ii\hbar\dot{\bm{a}}^{(1)}(t) = \tilde{\bm{H}}'(t) \bm{a}^{(0)}(t).
+\end{equation}
+在已知初条件$\bm{a}^{(1)}(t=-∞)=0$的情况下，这一方程的解为
+\begin{equation}
+    \label{eq:perturb_timedep_first_order_mat}
+    \bm{a}^{(1)}(t) = -\frac{\ii}{\hbar}∫_{-∞}^t \tilde{\bm{H}}'(τ) \bm{a}^{(0)}(τ) \dd{τ}.
+\end{equation}
+我们可以把这一表达式写成分量形式：
+\begin{equation}
+    \label{eq:perturb_timedep_first_order}
+    a_n^{(1)}(t) = -\frac{\ii}{\hbar}∑_m ∫_{-∞}^t \tilde{H}'_{nm}(τ) a_m^{(0)}(τ) \dd{τ} = -\frac{\ii}{\hbar}∑_m ∫_{-∞}^t H'_{nm}(τ) a_m^{(0)}(τ) \ee^{\iiω_{nm}τ} \dd{τ},
+\end{equation}
+上式中，左边是Heisenberg绘景的惯常写法（将时间演化的相位吸收进Hamiltonian算符中），右边则是Schrödinger绘景的。
+可见一阶微扰「式\eqref{eq:perturb_timedep_first_order}」描述了一个$τ$时刻因$H'$的存在从$m$态到$n$态的\emph{``跃迁''（transition）}，其贡献由不同$τ$时刻和不同的初态$m$累加而来。
+跃迁的概率与$H'$的强度直接相关，假如$H'(t)$变为两倍，即$2H'(t)$，那么跃迁概率幅$a^{(1)}(t)$将变为原来的两倍，表征跃迁概率的$\abs{a^{(1)}(t)}$将变为原来的四倍。
+
+$λ$的二阶方程为
+\begin{equation}
+    \ii\hbar\dot{\bm{a}}^{(2)}(t) = \tilde{\bm{H}}'(t) \bm{a}^{(1)}(t).
+\end{equation}
+显然，方程的解为
+\begin{equation}
+    \bm{a}^{(2)}(t) = -\frac{\ii}{\hbar}∫_{-∞}^t \tilde{\bm{H}}'(τ) \bm{a}^{(1)}(τ) \dd{τ}.
+\end{equation}
+将一阶微扰的结果「式\eqref{eq:perturb_timedep_first_order_mat}」代入上式，有
+\begin{equation}
+    \label{eq:perturb_timedep_second_order_mat}
+    \bm{a}^{(2)}(t) = \left(-\frac{\ii}{\hbar}\right)^2 ∫_{-∞}^{t}\!\!\!\dd{t_2} ∫_{-∞}^{t_2}\!\!\!\dd{t_1} \tilde{\bm{H}}'(t_2) \tilde{\bm{H}}'(t_1) \bm{a}^{(0)}(t_1).
+\end{equation}
+这表明二阶微扰对应一个二次跃迁的过程，分别发生于$t_1,t_2$时刻（且$t_1<t_2<t$）。
+由于二阶微扰涉及两次跃迁，因此其跃迁概率幅与$H'$的强度的平方成正比。
+我们也可以具体写出式\eqref{eq:perturb_timedep_second_order_mat}的分量形式：
+在Heisenberg绘景中，写作
+\begin{equation}
+    a_n^{(2)}(t) = \left(-\frac{\ii}{\hbar}\right)^2 ∑_{m_2,m_1} ∫_{-∞}^t\!\!\!\dd{t_2} ∫_{-∞}^{t_2}\!\!\!\dd{t_1} \tilde{H}'_{nm_2}(t_2) \tilde{H}'_{m_2m_1}(t_1) a_{m_1}^{(0)}(t_1);
+\end{equation}
+在Schrödinger绘景中，写作
+\begin{equation}
+    \label{eq:perturb_timedep_second_order_schrodinger}
+    a_n^{(2)}(t) = \left(-\frac{\ii}{\hbar}\right)^2 ∑_{m_2,m_1} ∫_{-∞}^t\!\!\!\dd{t_2} ∫_{-∞}^{t_2}\!\!\!\dd{t_1} H'_{nm_2}(t_2) \ee^{\iiω_{nm_2}t_2} H'_{m_2m_1}(t_1) \ee^{\iiω_{m_2m_1}t_1} a_{m_1}^{(0)}(t_1).
+\end{equation}
+
+\begin{tcolorbox}[breakable, colframe=purple, colback=red!10, title={\textbf{高阶含时微扰的一般表式}}]
+\it\small
+
+高阶含时微扰可以由$λ$的对应阶次方程推导出来，对于第$k$阶，是
+\begin{equation}
+    \ii\hbar\dot{\bm{a}}^{(k)}(t) = \tilde{\bm{H}}'(t) \bm{a}^{(k-1)}(t),
+\end{equation}
+对应的解是
+\begin{equation}
+    \bm{a}^{(k)}(t) = -\frac{\ii}{\hbar}∫_{-∞}^t \tilde{\bm{H}}'(τ) \bm{a}^{(k-1)}(τ) \dd{τ}.
+\end{equation}
+反复迭代，即可得到第$k$阶微扰的表式
+\begin{equation}
+    \bm{a}^{(k)}(t) = \left(-\frac{\ii}{\hbar}\right)^k
+    ∫_{-∞}^t\!\!\!\!\dd{t_k} ∫_{-∞}^{t_k}\!\!\!\!\dd{t_{k-1}} ∫_{-∞}^{t_{k-1}}\!\!\!\!\dd{t_{k-2}}⋯∫_{-∞}^{t_2}\!\!\!\!\dd{t_1} \tilde{\bm{H}}'(t_k) \tilde{\bm{H}}'(t_{k-1})⋯\tilde{\bm{H}}'(t_1) \bm{a}(t_1),
+\end{equation}
+这反映出，$k$阶微扰描述了一系列于$t_1,t_2,⋯,t_{k-1},t_k$时刻顺序发生的跃迁。
+
+\end{tcolorbox}
