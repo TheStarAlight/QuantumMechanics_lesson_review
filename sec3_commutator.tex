@@ -155,7 +155,8 @@
 
 
 \begin{tcolorbox}[breakable, title={\textbf{例题：两个对易子的计算}}]
-    \paragraph{题目}
+    \it\small
+    \fbox{ \textbf{题目} }
     计算如下几个对易子：
     \begin{enumerate}
         \item
@@ -169,10 +170,9 @@
             \end{equation}
     \end{enumerate}
 
-    \paragraph{解答}
+    \fbox{ \textbf{解答} }
 
-    \paragraph{(1)}
-    利用结论
+    1. 利用结论
     \begin{equation}
         [\pp,F(\rr,\pp)] = -\ii\hbar\del_{\rr}F(\rr,\pp),\quad [\rr,F(\rr,\pp)] = \ii\hbar\del_{\pp}F(\rr,\pp),
     \end{equation}
@@ -194,8 +194,7 @@
     \end{equation}
     \hfill$\square$
 
-    \paragraph{(2)}
-    考虑按算符乘积拆分成
+    2. 考虑按算符乘积拆分成
     \begin{equation}
         [p^2,\frac{1}{r}] = \pp\cdot[\pp,\frac{1}{r}] + [\pp,\frac{1}{r}]\cdot\pp.
     \end{equation}
@@ -221,18 +220,19 @@
 \end{tcolorbox}
 
 \begin{tcolorbox}[breakable, title={\textbf{例题：径向动量算符}}]
-    \paragraph{题目}
+    \it\small
+    \fbox{ \textbf{题目} }
     求解径向动量算符
     \begin{equation}
         p_r \coloneq \pp \cdot \frac{\rr}{r}
     \end{equation}
     在坐标表象下的表达式。
 
-    \paragraph{解答}
-    这一算符涉及动量与坐标的乘积，是非Hermite的。
-    首先进行Hermite化，定义Hermite的径向动量算符：
+    \fbox{ \textbf{解答} }
+    这一算符涉及动量与坐标的乘积，有$p_r^†=(\rr/r)⋅\pp≠p_r$，因此不是Hermite算符。
+    首先进行Hermitian化，定义Hermitian的径向动量算符：
     \begin{equation}
-        \hat{p}_r = \frac12 \left( \frac{\rr}{r}\cdot\pp + \pp\cdot\frac{\rr}{r} \right).
+        \hat{p}_r = \frac12(p_r+p_r^†) = \frac12 \left( \frac{\rr}{r}\cdot\pp + \pp\cdot\frac{\rr}{r} \right).
     \end{equation}
     这还不够简化，可以通过构造对易子，进一步化简。
     \begin{equation}

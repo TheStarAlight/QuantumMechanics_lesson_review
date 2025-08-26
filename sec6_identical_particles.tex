@@ -20,10 +20,8 @@
 \subsection{\texorpdfstring{交换对称性\quad Pauli不相容原理}{交换对称性  Pauli不相容原理}}
 \label{subsec:ip_sym}
 
-\begin{tcolorbox}
-    全同粒子体系的一大特点是\emph{“不可分辨”}。
-    这就是说，任何可观测量的测值概率分布在交换两个粒子时保持不变，称为\emph{“全同性原理”}，是量子力学的基本公设之一。
-\end{tcolorbox}
+全同粒子体系的一大特点是\emph{“不可分辨”}。
+这就是说，任何可观测量的测值概率分布在交换两个粒子时保持不变，称为\emph{“全同性原理”}，是量子力学的基本公设之一。
 
 我们考虑置换算符$P_{ij}$，其作用在于交换粒子$i,j$的全部坐标：
 \begin{equation}
@@ -45,14 +43,13 @@
 后者的下标为Anti-symmetric，称为\emph{反对称量子态}。
 
 实验表明，全同粒子体系的量子态交换对称性与粒子自旋有着确定的联系。
-凡自旋为整数倍$\hbar$的粒子，量子态是交换对称的，如$\pi$介子（$s=0$）、$\alpha$粒子（$s=0$）、光子（$s=\hbar$），称为\emph{Bose子（Bosen）}；
+凡自旋为整数倍$\hbar$的粒子，量子态是交换对称的，如$\pi$介子（$s=0$）、$\alpha$粒子（$s=0$）、光子（$s=\hbar$），称为\emph{Bose子（Boson）}；
 凡自旋为半奇数倍$\hbar$的粒子，量子态是交换反对称的，如电子、质子和中子（$s=\hbar/2$），称为\emph{Fermi子（Fermion）}。
 
 满足交换对称/反对称原理的量子态如何构建？
 我们考虑二粒子双本征态情形，设两个粒子能够分别处于单粒子态$\ket{\psi_{q_1}},\ket{\psi_{q_2}}$。
 
-\begin{tcolorbox}
-\textbf{Bose子}\quad
+\paragraph{Bose子}
 对于Bose子，量子态满足交换对称性，若$q_1\neq q_2$，我们可以将量子态写作归一化对称形式
 \begin{equation}
     \ket{\psi_{q_1},\psi_{q_2}}_{\rm{S}}
@@ -63,10 +60,8 @@
 \begin{equation}
     \ket{\psi_{q},\psi_{q}}_\rm{S} = \ket{\psi_q}_1 \ket{\psi_q}_2.
 \end{equation}
-\end{tcolorbox}
 
-\begin{tcolorbox}
-\textbf{Fermi子}\quad
+\paragraph{Fermi子}
 对于Fermi子，量子态满足交换反对称性，若$q_1\neq q_2$，有
 \begin{equation}
     \ket{\psi_{q_1},\psi_{q_2}}_{\rm{A}}
@@ -83,13 +78,11 @@
     \ket{\psi_q,\psi_q}_{\rm{A}} = 0.
 \end{equation}
 这说明\emph{两个全同Fermi子不能同时处于同一个单粒子态，称为Pauli不相容原理。}
-\end{tcolorbox}
 
-
-\begin{tcolorbox}[breakable, colframe=blue, colback=blue!10, title={\textbf{Bose, Fermi与经典体系粒子的组合数计算}}]
-
+\begin{tcolorbox}[breakable, colframe=purple, colback=red!10, title={\textbf{Bose, Fermi与经典体系粒子的组合数计算}}]
+    \it\small
     一个常见的问题是计算Bose, Fermi与经典体系粒子的组合数：
-    $n$\emph{个全同粒子处于}$m$\emph{个可能的单粒子态，对于Bose子, Fermi子与经典粒子，可能有几种组合方式？}
+    $n$个全同粒子处于$m$个可能的单粒子态，对于Bose子, Fermi子与经典粒子，可能有几种组合方式？
 
     对于经典粒子，粒子是完全可分辨的，因此粒子间互不相关，可能的组合数有
     \begin{equation}

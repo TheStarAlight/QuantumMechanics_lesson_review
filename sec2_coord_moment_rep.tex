@@ -13,17 +13,15 @@
 \subsubsection{正则对易关系}
 
 坐标表象与动量表象之间的联系是通过对易关系建立起来的。
-\begin{tcolorbox}
 \emph{坐标与动量这一对共轭变量的对易关系是}
 \begin{equation}
     \label{eq:cmr_commutator}
     [x, p_x] = \ii\hbar,
 \end{equation}
 其中$\hbar=h/2\pi$是\emph{约化Planck常数}。
-\end{tcolorbox}
+
 通过这一对易关系，我们可以构建出坐标与动量算符在相应表象中的表示，并进一步导出它们的表象变换。
 
-\begin{tcolorbox}
 \textbf{注意}
 \begin{itemize}
     \item{坐标与坐标、动量与动量之间均彼此对易，}
@@ -33,7 +31,6 @@
 \begin{equation}
     [q_i, q_j]=0,\quad [p_i, p_j]=0,\quad [q_i,p_j]=\ii\hbar\delta_{ij}.
 \end{equation}
-\end{tcolorbox}
 
 
 % ================================
@@ -46,7 +43,6 @@
 \end{equation}
 这里的$f(\rr)=\braket{\psi_{\rr}}{\psi}$正是坐标为$\rr$的坐标本征态的叠加系数，因此$f$表现为一个以坐标为自变量的复值函数，我们一般直接用$\psi$记号，称为\emph{（坐标）波函数（wavefunction）}。
 
-\begin{tcolorbox}
 在坐标表象下，坐标算符应当是对角的，且其对应本征值就是坐标值本身，因此其在坐标表象下的表示应为
 \begin{equation}
     \hat{\rr}^{(\rr)} = \rr.
@@ -67,26 +63,24 @@
     \end{bmatrix}
     = -\ii\hbar\del.
 \end{equation}
-\end{tcolorbox}
 
 在动量表象中，一个量子态被表为一系列动量本征态的叠加，叠加系数称为动量波函数（momentum wavefunction），记为$\psi(\pp)=\braket{\psi_{\pp}}{\psi}$。
-\begin{tcolorbox}
-    在动量表象中，动量算符是对角的，为
-    \begin{equation}
-        \hat{\pp}^{(\pp)} = \pp;
-    \end{equation}
-    坐标算符的表示为
-    \begin{equation}
-        \hat{\rr}^{(\pp)} = \ii\hbar\del_{\pp}.
-    \end{equation}
+在动量表象中，动量算符是对角的，为
+\begin{equation}
+    \hat{\pp}^{(\pp)} = \pp;
+\end{equation}
+坐标算符的表示为
+\begin{equation}
+    \hat{\rr}^{(\pp)} = \ii\hbar\del_{\pp}.
+\end{equation}
 
-    \textbf{注意}\quad 坐标表象与动量表象下的算符关系不是简单地对换算符形式。
-    动量算符在坐标表象下的表示中，微分算子的微分变量是坐标（显然，在坐标表象下，自变量只有坐标），而坐标算符在动量表象下的表示中，微分算子的微分变量是动量（因此特地予以标注）。
-    此外，这两个算符形式相差一个负号，请予注意。
-\end{tcolorbox}
+\textbf{注意}\quad 坐标表象与动量表象下的算符关系不是简单地对换算符形式。
+动量算符在坐标表象下的表示中，微分算子的微分变量是坐标（显然，在坐标表象下，自变量只有坐标），而坐标算符在动量表象下的表示中，微分算子的微分变量是动量（因此特地予以标注）。
+此外，这两个算符形式相差一个负号，请予注意。
 
 
 \begin{tcolorbox}[breakable, colframe=purple, colback=red!10, title={\textbf{关于连续力学量的算符}}]
+\it\small
 当我们讨论一个连续力学量时，态矢与算符该如何表示？
 首先我们需要明确，对于离散变量，态矢所对应的表示向量是有一一对应的本征值的，即我们选取了这样的对应方式：
 \begin{equation}
@@ -165,7 +159,6 @@ $Q(q',q)$即贡献了从$f(q)$到$g(q')$的线性叠加。
 
 我们首先研究坐标、动量本征态在坐标表象下的表示。
 
-\begin{tcolorbox}
 在坐标表象下，坐标为$\rr_0$的本征态可以通过本征方程$\hat{\rr}\psi_{\rr_0}(\rr) = \rr\psi_{\rr_0}(\rr) = \rr_0 \psi_{\rr_0}(\rr)$求得，归一化的坐标本征态波函数为
 \begin{equation}
     \psi_{\rr_0}(\rr) = \delta(\rr-\rr_0).
@@ -176,14 +169,17 @@ $Q(q',q)$即贡献了从$f(q)$到$g(q')$的线性叠加。
 \end{equation}
 注意，这里的归一化系数的选取使得该态在动量空间归一化为$\delta$函数。
 我们可以看到，\emph{动量本征态的坐标波函数表现为平面波的形式}，其波长为$\lambda=2\pi\hbar/p_0=h/p_0$，这正是\emph{de Broglie关系}。
-\end{tcolorbox}
 
 求得坐标、动量本征态在同一表象下的表示后，我们就可以求解坐标、动量之间的表象变换关系，回忆式\eqref{eq:principles_rep_trans_mat}与\eqref{eq:cmr_operator_cont}，我们写出$\rr\rightarrow\pp$表象变换的矩阵元
 \begin{equation}
     S(\pp,\rr) = \braket{\psi_{\pp}}{\psi_{\rr}} = \int\dd\rr \psi_{\pp}^*(\rr) \psi_{\rr}(\rr) = \frac{1}{(2\pi\hbar)^{3/2}} \ee^{-\ii\pp\cdot\rr/\hbar},
 \end{equation}
-\begin{tcolorbox}
-于是我们可以写出$\rr\rightarrow\pp$的表象变换\footnote{注意，这里使用了一个投影算符$\ket{\psi_{\rr}}\bra{\psi_{\rr}}$，其满足$\int\dd\rr\ket{\psi_{\rr}}\bra{\psi_{\rr}}=1$。}：
+于是我们可以写出$\rr\rightarrow\pp$的表象变换
+\footnote{
+    注意，这里使用了一个投影算符$𝒫(\rr):=\ket{\psi_{\rr}}\bra{\psi_{\rr}}$，其满足$\int\dd\rr\ket{\psi_{\rr}}\bra{\psi_{\rr}}=\mathbb{1}$，其中$\mathbb{1}$是单位算符。
+    在推导过程中插入单位算符是量子力学中常见的技巧。
+}
+：
 \begin{equation}
     \braket{\psi_{\pp}}{\psi}
     = \int\dd\rr \braket{\psi_{\pp}}{\psi_{\rr}}\braket{\psi_{\rr}}{\psi}
@@ -191,7 +187,6 @@ $Q(q',q)$即贡献了从$f(q)$到$g(q')$的线性叠加。
     = \int\dd\rr \frac{\ee^{-\ii\pp\cdot\rr/\hbar}}{(2\pi\hbar)^{3/2}} \psi(\rr).
 \end{equation}
 我们发现，这与Fourier变换具有完全相同的形式。
-\end{tcolorbox}
 
 % ================================
 \subsubsection{动量表象}
@@ -230,12 +225,9 @@ $Q(q',q)$即贡献了从$f(q)$到$g(q')$的线性叠加。
     H = \frac{p^2}{2m} + V(\rr).
 \end{equation}
 我们在坐标表象下研究这个问题，将动量算符的具体形式$\pp\rightarrow -\ii\hbar\del$代入\schrodinger 方程，可得
-\begin{tcolorbox}
 \emph{坐标表象下的\schrodinger 方程}：
 \begin{equation}
     \ii\hbar\pd_t \psi(\rr,t) = H\psi(\rr,t) = \left[-\frac{\hbar^2}{2m}\nabla^2 + V(\rr)\right]\psi(\rr,t).
 \end{equation}
-\end{tcolorbox}
 这一方程将在之后的问题中频繁出现。
 我们看到，这一方程形似波动方程，这也是\schrodinger 所提出的量子力学框架被称为“波动力学”的原因——\schrodinger 方程揭示了物质波的演化规律。
-

@@ -27,7 +27,8 @@
 \begin{equation}
     U(t,0) := \exp\left(-\ii \int_0^t H \dd\tau /\hbar\right)
 \end{equation}
-将两个时刻的量子态联系起来，称为\emph{时间演化算符（time-evolution operator）}。
+将两个时刻的量子态联系起来，称为\emph{时间演化算符（time-evolution operator）}
+\footnote{倘若不同时刻的Hamiltonian不对易（即不总是满足$[H(t_1),H(t_2)]=0$），那么，时间演化算符的表式前要加上时间排序算符$𝒯$，其确保展开后的时间演化算符满足按时间顺序排列。}。
 根据我们的物理直觉，这个算符显然具有\emph{幺正性（unitary）}，即其是保留内积的变换，这是说
 \begin{equation}
     \innerproduct{\psi(t)}{\psi(t)} = \mel{\psi(0)}{U^\dag U}{\psi(0)} = \mel{\psi(t)}{I}{\psi(0)} = \innerproduct{\psi(0)}{\psi(0)}.
